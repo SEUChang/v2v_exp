@@ -1,0 +1,48 @@
+<launch>
+    <!--  dnc launch  -->
+    <include file="$(find dnc)/launch/dnc.launch">
+        <arg name="dnc_map" value="$(find start)/map/2019_10_23_1.bag"/>
+        <arg name="dnc_map_tpk" value="/hdmap"/>
+        <arg name="dnc_veh_L" value="2.5"/>
+        <arg name="dnc_veh_vx" value="0.5"/>
+        <arg name="dnc_sys_Ts" value="0.15"/>
+        <arg name="dnc_max_angle_steer" value="0.75"/>
+        <arg name="dnc_max_ay" value="3"/>
+        <arg name="dnc_min_speed" value="1"/>
+        <arg name="dnc_u_weight" value="3"/>
+        <arg name="dnc_y_weight" value="1"/>
+        <arg name="dnc_yaw_weight" value="0.0"/>
+        <arg name="dnc_debug_info" value="true"/>
+        <arg name="dnc_vehstat_tpk" value="/iv_perception/veh_stat"/>
+        <arg name="dnc_traj_veh" value="/dnc/veh/traj"/>
+        <arg name="dnc_sw_tpk" value="/sw"/>
+
+        <arg name="dnc_check_r" value="1.00"/>
+        <arg name="dnc_check_back" value="-1"/>
+        <arg name="dnc_max_offset" value="1.5"/>
+
+        <arg name="dnc_can_back" value="true"/>
+        <arg name="dnc_goback_offset" value="0.8"/>
+        <arg name="dnc_smooth_offset" value="0.6"/>
+
+        <arg name="dnc_heading_err" value="0.5"/>
+        <arg name="dnc_stop_distance" value="6"/>
+        <arg name="dnc_ca_offset" value="1.25"/>
+        <arg name="dnc_ca_distance" value="12.5"/>
+        <arg name="dnc_des_len" value="26"/>
+
+
+        <arg name="dnc_check_rtk" value="true"/>
+        <arg name="dnc_rtk_check_cnt" value="1"/>
+        <arg name="dnc_check_sensor" value="ture"/>
+        <arg name="dnc_sensor_check_cnt" value="1"/>
+
+    </include>
+    <!--  viz launch  -->
+    <include file="$(find my_viz)/launch/viz.launch">
+        <arg name="viz_map_name" value="$(find start)/map/2019092214"/>
+        <arg name="viz_topic_name" value="/hdmap"/>
+        <arg name="viz_vehstat_tpk" value="/iv_perception/veh_stat"/>
+        <arg name="viz_refpath_tpk" value="/dnc/veh/traj"/>
+    </include>
+</launch>

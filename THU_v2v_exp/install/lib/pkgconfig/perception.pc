@@ -1,0 +1,8 @@
+prefix=/home/sunhao/wild/install
+
+Name: perception
+Description: Description of perception
+Version: 1.8.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp std_msgs sensor_msgs pcl_ros pcl_conversions velodyne_pointcloud tf

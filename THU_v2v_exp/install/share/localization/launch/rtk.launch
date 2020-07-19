@@ -1,0 +1,14 @@
+<launch>
+    <arg name="rtk_serial_tpk" default="/rtk/recvfrom_serial"/>
+    <arg name="rtk_nmea" default="$GPFPD"/>
+    <arg name="rtk_utm_ori" default="$GPFPD$"/>
+    <arg name="rtk_freq" default="10"/>
+    <arg name="rtk_debug_info" default="True"/>
+    <node pkg="localization" type="rtk_base" name="rtk_base">
+        <param name="rtk_tpk" value="$(arg rtk_serial_tpk)"/>
+        <param name="nmea"  value="$(arg rtk_nmea)"/>
+        <param name="utm_ori"  value="$(arg rtk_utm_ori)"/>
+        <param name="freq" value="$(arg rtk_freq)"/>
+        <param name="debug_info"  value="$(arg rtk_debug_info)"/>
+    </node>
+</launch>

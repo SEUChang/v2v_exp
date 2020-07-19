@@ -1,0 +1,40 @@
+<launch>
+    <!--  dsrc  -->
+    <include file="tsu_dsrc_to.launch">
+        <arg name="dsrc_id" value="1"/>
+        <arg name="freq" value="1"/>
+    </include>
+
+
+    <include file="$(find shcom)/launch/tcp_server.launch">
+        <arg name="tcp_recv_port" value="8081"/>
+        <arg name="tcp_buf_size" value="1000"/>
+        <arg name="pub_tpk" value="server_pub"/>
+        <arg name="sub_tpk" value="server_sub"/>
+        <arg name="tcp_debug_info" value="True"/>
+    </include>
+
+    <include file="$(find shcom)/launch/tcp_client.launch">
+        <arg name="tcp_send_port" value="8081"/>
+        <arg name="tcp_send_ip" value="127.0.0.1"/>
+        <arg name="tcp_buf_size" value="1000"/>
+        <arg name="pub_tpk" value="client_pub"/>
+        <arg name="sub_tpk" value="client_sub"/>
+        <arg name="tcp_debug_info" value="True"/>
+    </include>
+
+    <include file="$(find localization)/launch/rtk.launch">
+        <arg name="rtk_serial_tpk" value="/gnss/rtk"/>
+        <arg name="rtk_nmea" value="$GPFPD$"/>
+        <arg name="rtk_utm_ori" value="$mode2$"/>
+        <arg name="rtk_freq" value="10"/>
+        <arg name="rtk_debug_info" value="true"/>
+    </include>
+
+    <include file="$(find dnc)/launch/platoon_ctrl.launch"/>
+
+    <include file="$(find interface)/launch/chassis_ctrl.launch"/>
+
+    <include file="$(find perception)/launch/radar.launch"/>
+
+</launch>

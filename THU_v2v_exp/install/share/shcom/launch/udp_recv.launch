@@ -1,0 +1,13 @@
+<launch>
+    <arg name="my_ns"/>
+    <arg name="udp_recv_port"/>
+    <arg name="udp_pub_tpk"/>
+    <arg name="udp_buf_size"/>
+    <arg name="udp_debug_info"/>
+    <node ns="$(arg my_ns)" pkg="shcom" type="udp_recv" name="udp_recv">
+        <param name="recv_port" value="$(arg udp_recv_port)"/>
+        <param name="udp_pub_tpk"  value="$(arg udp_pub_tpk)"/>
+        <param name="buf_size"  value="$(arg udp_buf_size)"/>
+        <param name="debug_info"  value="$(arg udp_debug_info)"/>
+    </node>
+</launch>

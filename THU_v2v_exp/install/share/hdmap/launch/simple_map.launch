@@ -1,0 +1,16 @@
+<launch>
+
+    <arg name="simu_freq"/>
+    <arg name="simu_utm_tpk"/>
+    <arg name="simu_cfg_tpk"/>
+    <arg name="simu_save_file"/>
+
+    <node pkg="hdmap" type="simple_map" name="simple_map" output="screen">
+        <param name="secretkey" type="string" value="author=kunpeng"/>
+        <param name="freq" value="$(arg simu_freq)"/>
+        <param name="utm_tpk" value="$(arg simu_utm_tpk)"/>
+        <param name="cfg_tpk" value="$(arg simu_cfg_tpk)"/>
+        <param name="save_file" value="$(arg simu_save_file)"/>
+
+    </node>
+</launch>

@@ -1,0 +1,5 @@
+perception_msgs/Point start_pt
+perception_msgs/Point goal_pt
+int32 type
+---
+perception_msgs/GlobalPathIndex path

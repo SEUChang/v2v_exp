@@ -1,0 +1,13 @@
+<launch>
+    <arg name="dsrc_id" default="2"/>
+    <arg name="freq" default="10"/>
+    <node  pkg="interface" type="to_dsrc" name="to_dsrc" output="screen">
+        <param name="id" value="$(arg dsrc_id)"/>
+        <param name="freq" value="$(arg freq)"/>
+    </node>
+
+    <node  pkg="interface" type="recv_dsrc" name="recv_dsrc" output="screen">
+<!--        <param name="sub_tpk" value="/tcp_server/recv_str"/>-->
+<!--        <param name="freq" value="$(arg freq)"/>-->
+    </node>
+</launch>

@@ -1,0 +1,17 @@
+<launch>
+    <arg name="qx_serial_port"/>
+    <arg name="qx_baud_rate"/>
+    <arg name="qx_appkey"/>
+    <arg name="qx_appSecret"/>
+    <arg name="qx_deviceId"/>
+    <arg name="qx_deviceType"/>
+    <node pkg="localization" type="qx_sdk" name="qx_sdk">
+        <param name="serial_port" value="$(arg qx_serial_port)"/>
+        <param name="baud_rate" value="$(arg qx_baud_rate)"/>
+        <param name="appkey" type="string" value="$(arg qx_appkey)"/>
+        <param name="appSecret" type="string"  value="$(arg qx_appSecret)"/>
+        <param name="deviceId" type="string" value="$(arg qx_deviceId)"/>
+        <param name="deviceType" type="string"  value="$(arg qx_deviceType)"/>
+        <param name="debug_info"  value="true"/>
+    </node>
+</launch>

@@ -1,0 +1,29 @@
+<launch>
+    <!--launch qianxu sdk-->
+    <include file="$(find localization)/launch/qx_sdk.launch">
+<!--        <arg name="qx_my_ns" value="/qianxun"/>-->
+        <arg name="qx_serial_port" value="/dev/ttyUSB0"/>
+        <arg name="qx_baud_rate" value="115200"/>
+        <arg name="qx_appkey" value="689328"/>
+        <arg name="qx_appSecret"  value="712fd415211cd2516969313019506565a96bb4afd0563009b4c5ccf9a9eb4407"/>
+        <arg name="qx_deviceId"  value="100088101020"/>
+        <arg name="qx_deviceType"  value="1"/>
+    </include>
+    <!--launch serial com-->
+    <include file="$(find shcom)/launch/serial_com.launch">
+        <arg name="my_ns" value="/rtk"/>
+        <arg name="com_serial_port" value="/dev/ttyUSB1"/>
+        <arg name="com_baud_rate" value="115200"/>
+        <arg name="com_freq" value="10"/>
+        <arg name="com_sub_tpk" value="HDMap"/>
+        <arg name="com_pub_tpk" value="/gnss/rtk"/>
+    </include>
+    <!--launch rtk reader com-->
+    <include file="$(find localization)/launch/rtk.launch">
+        <arg name="rtk_serial_tpk" value="/gnss/rtk"/>
+        <arg name="rtk_nmea" value="$GPFPD$"/>
+        <arg name="rtk_utm_ori" value="$mode2$"/>
+        <arg name="rtk_freq" value="10"/>
+        <arg name="rtk_debug_info" value="true"/>
+    </include>
+</launch>

@@ -1,0 +1,8 @@
+prefix=/home/sunhao/wild/install
+
+Name: simulator_rviz_plugin
+Description: Description of simulator_rviz_plugin
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

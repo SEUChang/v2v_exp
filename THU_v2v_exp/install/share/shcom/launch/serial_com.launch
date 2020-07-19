@@ -1,0 +1,15 @@
+<launch>
+    <arg name="com_serial_port" default="/dev/ttyS0"/>
+    <arg name="com_baud_rate" default="115200"/>
+    <arg name="com_freq" default="10"/>
+    <arg name="com_sub_tpk" default="/serial/to_send"/>
+    <arg name="com_pub_tpk" default="/serial/recvfrom"/>
+    <arg name="my_ns" default="serial"/>
+    <node ns="$(arg my_ns)" pkg="shcom" type="serial_com" name="serial_com">
+        <param name="serial_port" value="$(arg com_serial_port)"/>
+        <param name="baud_rate" value="$(arg com_baud_rate)"/>
+        <param name="freq" value="$(arg com_freq)"/>
+        <param name="sub_tpk" value="$(arg com_sub_tpk)"/>
+        <param name="pub_tpk" value="$(arg com_pub_tpk)"/>
+    </node>
+</launch>

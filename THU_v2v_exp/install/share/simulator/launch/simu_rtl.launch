@@ -1,0 +1,12 @@
+<launch>
+    <arg name="simu_obs_tpk"/>
+    <arg name="simu_rtl_tpk"/>
+    <arg name="simu_freq"/>
+    <!--start node -->
+    <node pkg="simulator" type="simu_rtl" name="simu_rtl" output="screen">
+        <param name="obs_tpk" value="$(arg simu_obs_tpk)"/>
+        <param name="rtl_tpk" value="$(arg simu_rtl_tpk)"/>
+        <param name="freq" value="$(arg simu_freq)"/>
+<!--        <param name="gnss_tpk" value="$(arg simulator_gnss_tpk)"/>-->
+    </node>
+</launch>

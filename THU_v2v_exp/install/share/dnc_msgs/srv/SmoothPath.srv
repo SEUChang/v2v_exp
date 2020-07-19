@@ -1,0 +1,4 @@
+dnc_msgs/DNCpoint st_pt
+dnc_msgs/DNCpath  ori_path
+---
+dnc_msgs/DNCpath res_path

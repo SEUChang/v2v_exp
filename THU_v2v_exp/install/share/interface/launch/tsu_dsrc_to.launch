@@ -1,0 +1,14 @@
+<launch>
+    <arg name="my_ns" default="/TCP"/>
+    <arg name="dsrc_id" default="2"/>
+    <arg name="freq" default="10"/>
+    <arg name="nav_tpk" default="/nav_info"/>
+    <arg name="is_print" default="True"/>
+    <node  pkg="interface" type="to_dsrc" name="to_dsrc" output="screen">
+        <param name="id" value="$(arg dsrc_id)"/>
+        <param name="freq" value="$(arg freq)"/>
+        <param name="namespace" value="$(arg my_ns)"/>
+        <param name="nav_tpk" value="$(arg nav_tpk)"/>
+        <param name="is_print" value="$(arg is_print)"/>
+    </node>
+</launch>

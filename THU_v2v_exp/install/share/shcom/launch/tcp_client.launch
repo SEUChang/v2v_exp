@@ -1,0 +1,16 @@
+<launch>
+    <arg name="my_ns" default="/TCP"/>
+    <arg name="tcp_send_port" default="8080"/>
+    <arg name="tcp_send_ip" default="127.0.0.1"/>
+    <arg name="tcp_buf_size" default="1000"/>
+    <arg name="is_print" default="True"/>
+    <arg name="send_freq" default="3.33333"/>
+    <node ns="$(arg my_ns)" pkg="shcom" type="tcp_client" name="tcp_client" output="screen">
+        <param name="send_port" value="$(arg tcp_send_port)"/>
+        <param name="send_ip" value="$(arg tcp_send_ip)"/>
+        <param name="my_print" value="$(arg is_print)"/>
+        <param name="freq" value="$(arg send_freq)"/>
+        <param name="namespace" value="$(arg my_ns)"/>
+<!--        <remap from="" to=""/>-->
+    </node>
+</launch>

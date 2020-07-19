@@ -1,0 +1,14 @@
+<launch>
+    <arg name="my_ns" default="TCP"/>
+    <arg name="tcp_recv_port" default="8080"/>
+    <arg name="tcp_buf_size" default="1000"/>
+    <arg name="pub_tpk" default="server_pub"/>
+    <arg name="sub_tpk" default="server_sub"/>
+    <arg name="tcp_debug_info" default="True"/>
+    <node ns="$(arg my_ns)" pkg="shcom" type="tcp_server" name="tcp_server" output="screen">
+        <param name="recv_port" value="$(arg tcp_recv_port)"/>
+        <param name="pub_tpk"  value="$(arg pub_tpk)"/>
+        <param name="buf_size"  value="$(arg tcp_buf_size)"/>
+        <param name="debug_info"  value="$(arg tcp_debug_info)"/>
+    </node>
+</launch>

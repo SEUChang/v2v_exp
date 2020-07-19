@@ -1,0 +1,31 @@
+
+(cl:in-package :asdf)
+
+(defsystem "dnc_msgs-msg"
+  :depends-on (:roslisp-msg-protocol :roslisp-utils :geometry_msgs-msg
+               :std_msgs-msg
+)
+  :components ((:file "_package")
+    (:file "Behavior" :depends-on ("_package_Behavior"))
+    (:file "_package_Behavior" :depends-on ("_package"))
+    (:file "Cmd" :depends-on ("_package_Cmd"))
+    (:file "_package_Cmd" :depends-on ("_package"))
+    (:file "Cmd_WF" :depends-on ("_package_Cmd_WF"))
+    (:file "_package_Cmd_WF" :depends-on ("_package"))
+    (:file "DNCpath" :depends-on ("_package_DNCpath"))
+    (:file "_package_DNCpath" :depends-on ("_package"))
+    (:file "DNCpoint" :depends-on ("_package_DNCpoint"))
+    (:file "_package_DNCpoint" :depends-on ("_package"))
+    (:file "DNCtrajectory" :depends-on ("_package_DNCtrajectory"))
+    (:file "_package_DNCtrajectory" :depends-on ("_package"))
+    (:file "Mission" :depends-on ("_package_Mission"))
+    (:file "_package_Mission" :depends-on ("_package"))
+    (:file "Path" :depends-on ("_package_Path"))
+    (:file "_package_Path" :depends-on ("_package"))
+    (:file "Pt" :depends-on ("_package_Pt"))
+    (:file "_package_Pt" :depends-on ("_package"))
+    (:file "VehStat" :depends-on ("_package_VehStat"))
+    (:file "_package_VehStat" :depends-on ("_package"))
+    (:file "VizTraj" :depends-on ("_package_VizTraj"))
+    (:file "_package_VizTraj" :depends-on ("_package"))
+  ))

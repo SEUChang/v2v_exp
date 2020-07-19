@@ -1,0 +1,19 @@
+<launch>
+    <arg name="viz_map_name"/>
+    <arg name="viz_topic_name"/>
+    <arg name="viz_vehstat_tpk"/>
+    <arg name="viz_refpath_tpk"/>
+    <node pkg="my_viz" type="viz_all" name="viz_all" output="screen">
+        <param name="map_name" value="$(arg viz_map_name)"/>
+        <param name="map_topic" value="$(arg viz_topic_name)"/>
+        <param name="vehstat_tpk" value="$(arg viz_vehstat_tpk)"/>
+        <param name="refpath_tpk" value="$(arg viz_refpath_tpk)"/>
+    </node>
+
+    <node pkg="my_viz" type="my_tf" name="my_tf">
+        <param name="vehstat_tpk" value="$(arg viz_vehstat_tpk)"/>
+        <param name="freq" value="50"/>
+    </node>
+
+    <node pkg="rviz" type="rviz" name="rviz"/>
+</launch>

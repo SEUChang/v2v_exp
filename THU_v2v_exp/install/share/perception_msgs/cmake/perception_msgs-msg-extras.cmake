@@ -1,0 +1,2 @@
+set(perception_msgs_MESSAGE_FILES "msg/Lane.msg;msg/PerceptionMap.msg;msg/Localization.msg;msg/InternalStat.msg;msg/VehStat.msg;msg/Point.msg;msg/Line.msg;msg/Section.msg;msg/Map.msg;msg/GlobalPathIndex.msg;msg/MapCfg.msg;msg/ObsOccGrid.msg;msg/Pt.msg;msg/Object.msg;msg/GridObs.msg;msg/RTLmap.msg;msg/V2XUnit.msg;msg/V2XData.msg")
+set(perception_msgs_SERVICE_FILES "srv/GlobalMap.srv;srv/GlobalPath.srv;srv/PtLocalization.srv")

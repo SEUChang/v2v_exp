@@ -1,0 +1,16 @@
+<launch>
+    <arg name="simulator_cmd_tpk"/>
+    <arg name="simulator_bag_name"/>
+    <arg name="simulator_map_tpk"/>
+    <arg name="simulator_gnss_tpk"/>
+<!--    <arg name="simulator_using_utm"/>-->
+
+    <!--start node -->
+    <node pkg="simulator" type="buu_simulator" name="buu_simulator" output="screen">
+        <param name="cmd_tpk" value="$(arg simulator_cmd_tpk)"/>
+        <param name="bag_name" value="$(arg simulator_bag_name)"/>
+        <param name="map_tpk" value="$(arg simulator_map_tpk)"/>
+        <param name="gnss_tpk" value="$(arg simulator_gnss_tpk)"/>
+<!--        <param name="using_utm" value="$(arg simulator_using_utm)"/>-->
+    </node>
+</launch>

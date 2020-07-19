@@ -1,0 +1,9 @@
+<library path="lib/libsimulator_rviz_plugin">
+    <class name="simulator_rviz_plugin/SimulatorPad"
+           type="iv::SimulatorPad"
+           base_class_type="rviz::Panel">
+        <description>
+            simulator editor for sun.hao self use ltd
+        </description>
+    </class>
+</library>

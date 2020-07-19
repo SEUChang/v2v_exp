@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="dnc" type="platoon_ctrl" name="platoon_ctrl" output="screen">
+
+    </node>
+</launch>

@@ -1,0 +1,5 @@
+perception_msgs/Point pt
+---
+int32 s
+int32 l
+int32 p

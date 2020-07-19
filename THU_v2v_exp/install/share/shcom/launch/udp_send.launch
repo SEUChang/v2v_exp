@@ -1,0 +1,13 @@
+<launch>
+    <arg name="my_ns"/>
+    <arg name="udp_send_ip"/>
+    <arg name="udp_send_port"/>
+    <arg name="udp_sub_tpk"/>
+    <arg name="udp_buf_size"/>
+    <node ns="$(arg my_ns)"  pkg="shcom" type="udp_send" name="udp_send">
+        <param name="send_ip"  value="$(arg udp_send_ip)"/>
+        <param name="send_port" value="$(arg udp_send_port)"/>
+        <param name="udp_sub"  value="$(arg udp_sub_tpk)"/>
+        <param name="buf_size"  value="$(arg udp_buf_size)"/>
+    </node>
+</launch>

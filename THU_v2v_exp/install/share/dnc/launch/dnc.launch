@@ -1,0 +1,97 @@
+<launch>
+    <!-- arg decl  -->
+    <arg name="dnc_map"/>
+    <arg name="dnc_map_tpk"/>
+    <arg name="dnc_veh_L"/>
+    <arg name="dnc_veh_vx"/>
+    <arg name="dnc_sys_Ts"/>
+    <arg name="dnc_max_angle_steer"/>
+    <arg name="dnc_max_ay"/>
+    <arg name="dnc_min_speed"/>
+    <arg name="dnc_u_weight"/>
+    <arg name="dnc_y_weight"/>
+    <arg name="dnc_yaw_weight"/>
+    <arg name="dnc_debug_info"/>
+    <arg name="dnc_vehstat_tpk"/>
+    <arg name="dnc_traj_veh"/>
+    <arg name="dnc_sw_tpk"/>
+    <arg name="dnc_stop_distance"/>
+    <arg name="dnc_check_r"/>
+    <arg name="dnc_check_back"/>
+
+    <arg name="dnc_heading_err"/>
+    <arg name="dnc_ca_offset"/>
+    <arg name="dnc_ca_distance"/>
+    <arg name="dnc_check_rtk"/>
+    <arg name="dnc_rtk_check_cnt"/>
+    <arg name="dnc_check_sensor"/>
+    <arg name="dnc_sensor_check_cnt"/>
+    <arg name="dnc_des_len"/>
+    <arg name="dnc_max_offset"/>
+    <arg name="dnc_can_back"/>
+    <arg name="dnc_goback_offset"/>
+    <arg name="dnc_smooth_offset"/>
+
+    <!-- start global planner  -->
+    <node pkg="dnc" type="global_planner" name="global_planner" output="screen">
+        <param name="bag_name" value="$(arg dnc_map)"/>
+        <param name="topic_name" value="$(arg dnc_map_tpk)"/>
+    </node>
+
+    <!--start  planner-->
+    <node pkg="dnc" type="planner" name="planner" output="screen">
+        <param name="vehstat_tpk" value="$(arg dnc_vehstat_tpk)"/>
+        <param name="stop_distance" value="$(arg dnc_stop_distance)"/>
+        <param name="check_R" value="$(arg dnc_check_r)"/>
+        <param name="check_back" value="$(arg dnc_check_back)"/>
+        <param name="max_offset" value="$(arg dnc_max_offset)"/>
+
+
+
+        <param name="heading_err" value="$(arg dnc_heading_err)"/>
+        <param name="ca_offset" value="$(arg dnc_ca_offset)"/>
+        <param name="ca_distance" value="$(arg dnc_ca_distance)"/>
+        <param name="des_len" value="$(arg dnc_des_len)"/>
+        <param name="can_back" value="$(arg dnc_can_back)"/>
+        <param name="goback_offset" value="$(arg dnc_goback_offset)"/>
+        <param name="smooth_offset" value="$(arg dnc_smooth_offset)"/>
+
+
+        <param name="check_rtk" value="$(arg dnc_check_rtk)"/>
+        <param name="rtk_check_cnt" value="$(arg dnc_rtk_check_cnt)"/>
+        <param name="check_sensor" value="$(arg dnc_check_sensor)"/>
+        <param name="sensor_check_cnt" value="$(arg dnc_sensor_check_cnt)"/>
+
+
+
+        <!--for mpc ctrller-->
+        <param name="veh_L" value="$(arg dnc_veh_L)"/>
+        <param name="veh_vx" value="$(arg dnc_veh_vx)"/>
+        <param name="sys_Ts" value="$(arg dnc_sys_Ts)"/>
+        <param name="max_angle_steer" value="$(arg dnc_max_angle_steer)"/>
+        <param name="max_ay" value="$(arg dnc_max_ay)"/>
+        <param name="min_speed" value="$(arg dnc_min_speed)"/>
+        <param name="u_weight" value="$(arg dnc_u_weight)"/>
+        <param name="y_weight" value="$(arg dnc_y_weight)"/>
+        <param name="yaw_weight" value="$(arg dnc_yaw_weight)"/>
+        <param name="debug_info" value="$(arg dnc_debug_info)"/>
+    </node>
+
+
+    <!--start  mpc ctrller-->
+<!--    <node pkg="dnc" type="mpc_ctrller" name="mpc_ctrller" output="screen">-->
+<!--        <param name="vehstat_tpk" value="$(arg dnc_vehstat_tpk)"/>-->
+<!--        <param name="path_tpk" value="$(arg dnc_traj_veh)"/>-->
+<!--        <param name="veh_L" value="$(arg dnc_veh_L)"/>-->
+<!--        <param name="veh_vx" value="$(arg dnc_veh_vx)"/>-->
+<!--        <param name="sys_Ts" value="$(arg dnc_sys_Ts)"/>-->
+<!--        <param name="max_angle_steer" value="$(arg dnc_max_angle_steer)"/>-->
+<!--        <param name="max_ay" value="$(arg dnc_max_ay)"/>-->
+<!--        <param name="min_speed" value="$(arg dnc_min_speed)"/>-->
+<!--        <param name="u_weight" value="$(arg dnc_u_weight)"/>-->
+<!--        <param name="y_weight" value="$(arg dnc_y_weight)"/>-->
+<!--        <param name="yaw_weight" value="$(arg dnc_yaw_weight)"/>-->
+<!--        <param name="debug_info" value="$(arg dnc_debug_info)"/>-->
+<!--        <param name="track_cmd_tpk" value="$(arg dnc_sw_tpk)"/>-->
+<!--    </node>-->
+</launch>

@@ -1,0 +1,47 @@
+<launch>
+    <include file="$(find shcom)/launch/tcp_client.launch">
+        <arg name="my_ns" value="/senddata"/>
+        <arg name="tcp_send_port" value="8081"/>
+        <arg name="tcp_send_ip" value="127.0.0.1"/>
+        <arg name="tcp_buf_size" value="1000"/>
+        <arg name="is_print" value="True"/>
+        <arg name="send_freq" value="3.333333"/>
+    </include>
+
+    <include file="$(find shcom)/launch/tcp_client.launch">
+        <arg name="my_ns" value="/recvdata"/>
+        <arg name="tcp_send_port" value="8080"/>
+        <arg name="tcp_send_ip" value="127.0.0.1"/>
+        <arg name="tcp_buf_size" value="1000"/>
+        <arg name="is_print" value="True"/>
+        <arg name="send_freq" value="3.333333"/>
+    </include>
+
+    <include file="$(find interface)/launch/tsu_dsrc_to.launch">
+        <arg name="dsrc_id" value="1"/>
+        <arg name="freq" value="1"/>
+        <arg name="my_ns" value="/senddata"/>
+    </include>
+
+    <include file="$(find interface)/launch/tsu_dsrc_recv.launch">
+        <arg name="my_ns" value="/recvdata"/>
+    </include>
+
+<!--    <include file="$(find shcom)/launch/tcp_server.launch">-->
+<!--        <arg name="my_ns" value="/senddata"/>-->
+<!--        <arg name="tcp_recv_port" value="8081"/>-->
+<!--        <arg name="tcp_buf_size" value="1000"/>-->
+<!--        <arg name="pub_tpk" value="server_pub"/>-->
+<!--        <arg name="sub_tpk" value="server_sub"/>-->
+<!--    </include>-->
+
+<!--    <include file="$(find shcom)/launch/tcp_server.launch">-->
+<!--        <arg name="my_ns" value="/recvdata"/>-->
+<!--        <arg name="tcp_recv_port" value="8080"/>-->
+<!--        <arg name="tcp_buf_size" value="1000"/>-->
+<!--        <arg name="pub_tpk" value="server_pub"/>-->
+<!--        <arg name="sub_tpk" value="server_sub"/>-->
+<!--    </include>-->
+
+</launch>
+

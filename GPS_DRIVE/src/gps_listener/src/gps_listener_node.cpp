@@ -14,6 +14,7 @@ void gpsCallback(const nav_msgs::Odometry::ConstPtr& msg)
     ROS_INFO("latitude : .2f%",ll2utm_msg.pose.covariance[1]);
     ROS_INFO("yaw (rad) : .2f",ll2utm_msg.pose.covariance[2]);
     ROS_INFO("speed vx (m/s): .2f%",ll2utm_msg.twist.twist.linear.x); 
+    ROS_INFO("==========end==========");
 }
 
 int main(int argc, char **argv)

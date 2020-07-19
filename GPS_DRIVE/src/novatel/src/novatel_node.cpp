@@ -566,13 +566,13 @@ by lc end*/
 		//ll2utm_msg.twist.twist.linear.x = speed * sin(sideslip_angle);
 		//ll2utm_msg.twist.twist.linear.y = speed * cos(sideslip_angle);
 //add by lc begin
-    ll2utm_msg.twist.twist.linear.y = stamp.toSec();//UTC
+    ll2utm_msg.twist.twist.linear.y = stamp.toSec();//UTC sec
 		ll2utm_msg.pose.pose.position.x = utm.easting;//utm x
 		ll2utm_msg.pose.pose.position.y = utm.northing;//utm y
-    ll2utm_msg.pose.covariance[0] = inspvax.longitude;// longitude
-    ll2utm_msg.pose.covariance[1] = inspvax.latitude;// latitude
-    ll2utm_msg.pose.covariance[2] = deg2rad(( inspvax.azimuth - 90 ));//yaw
-    ll2utm_msg.twist.twist.linear.x = speed * cos(sideslip_angle);//speed vx
+    ll2utm_msg.pose.covariance[0] = inspvax.longitude;// longitude deg
+    ll2utm_msg.pose.covariance[1] = inspvax.latitude;// latitude  deg
+    ll2utm_msg.pose.covariance[2] = deg2rad(( inspvax.azimuth));//yaw N( 0 deg) , CW(+)
+    ll2utm_msg.twist.twist.linear.x = speed * cos(sideslip_angle);//speed vx m/s
     
 
     

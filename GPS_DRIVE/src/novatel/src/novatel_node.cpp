@@ -573,6 +573,10 @@ by lc end*/
     ll2utm_msg.pose.covariance[1] = inspvax.latitude;// latitude
     ll2utm_msg.pose.covariance[2] = deg2rad(( inspvax.azimuth - 90 ));//yaw
     ll2utm_msg.twist.twist.linear.x = speed * cos(sideslip_angle);//speed vx
+    
+
+    
+    
 //add by lc end
 		ll2utm_publisher_.publish(ll2utm_msg);
 	}

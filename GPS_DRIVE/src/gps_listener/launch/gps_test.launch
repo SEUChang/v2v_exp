@@ -10,6 +10,6 @@
 		<param name="ll2utm_topic" value="/ll2utm_odom"/>
 		<param name="corr_imu_topic" value="/corr_imu"/>
 	</node>
-	<node pkg = "gps_listener" type = "gps_listener_node" name = "gps_listener_node">
+	<node pkg = "gps_listener" type = "gps_listener_node" name = "gps_listener_node" output = "screen"/>
 </launch>
 

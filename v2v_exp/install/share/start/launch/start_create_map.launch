@@ -1,0 +1,18 @@
+<launch>
+    <include file="$(find hdmap)/launch/simple_map.launch" >
+        <arg name="simu_freq" value="10"/>
+        <arg name="simu_utm_tpk" value="/gnss/utm"/>
+        <arg name="simu_cfg_tpk" value="/hdmap/cfg"/>
+        <arg name="simu_save_file" value="$(find start)/map/"/>
+    </include>
+
+    <!--hdmap cfg-->
+    <node pkg="start" type="hdmap_cfg" name="hdmap_cfg">
+        <param name="cfg_tpk" value="/hdmap/cfg"/>
+        <param name="freq" value="10"/>
+    </node>
+    <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure"/>
+
+    <!--rivz-->
+    <node pkg="rviz" type="rviz" name="rviz"/>
+</launch>

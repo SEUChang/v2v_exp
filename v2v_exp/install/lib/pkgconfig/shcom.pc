@@ -1,0 +1,8 @@
+prefix=/home/sunhao/prog/wild/install
+
+Name: shcom
+Description: Description of shcom
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

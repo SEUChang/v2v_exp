@@ -1,8 +1,0 @@
-prefix=/home/sunhao/wild/install
-
-Name: my_viz
-Description: Description of my_viz
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

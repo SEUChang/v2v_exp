@@ -1,11 +1,11 @@
 # v2v_exp
-==for Chongqing v2v exp==
+==Chongqing v2v exp==
 
 目前有三个workspace， 底层控制，gps驱动，THU队列控制算法
 
 底层控制节点在原有基础上添加了一个适配器，实现控制命令转换(*待测试)*
 
-gps节点的输出格式也进行了调整，具体可见pdf
+gps节点的输出格式也进行了调整，具体可见pdf.
 
 ```cpp
 roslaunch ant_driver ant_driver.launch//base control

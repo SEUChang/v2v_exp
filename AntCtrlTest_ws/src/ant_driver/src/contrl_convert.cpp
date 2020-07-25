@@ -11,24 +11,23 @@
 class contrl_convert
 {
 	public:
-		void run(int argc, char** argv);
+		void run();
 		void cmdCallback(const std_msgs::Float32MultiArray::ConstPtr msg);
 	private:
 		little_ant_msgs::ControlCmd1 cmd1;
 		little_ant_msgs::ControlCmd2 cmd2;
-		ros::NodeHandle nh;
 		ros::Subscriber sub;
 		ros::Publisher cmd1_pub;
 		ros::Publisher cmd2_pub;
 };//class contrl_convert end
 
 
-void contrl_convert::run(int argc, char** argv)
+void contrl_convert::run()
 {
-	ros::init(argc, argv, "contrl_convert_node");
-	ros::Subscriber sub = nh.subscribe("/cmd/all", 10, &contrl_convert::cmdCallback, this);
-	ros::Publisher  cmd1_pub = nh.advertise<little_ant_msgs::ControlCmd1>("controlCmd1",10);
-	ros::Publisher  cmd2_pub = nh.advertise<little_ant_msgs::ControlCmd1>("controlCmd2",10);
+	ros::NodeHandle nh;
+	sub = nh.subscribe("/cmd/all", 10, &contrl_convert::cmdCallback, this);
+	cmd1_pub = nh.advertise<little_ant_msgs::ControlCmd1>("controlCmd1",10);
+	cmd2_pub = nh.advertise<little_ant_msgs::ControlCmd2>("controlCmd2",10);
 	ros::spin();
 }
 
@@ -64,8 +63,9 @@ void contrl_convert::cmdCallback(const std_msgs::Float32MultiArray::ConstPtr rec
 
 int main(int argc, char** argv)
 {
+	ros::init(argc, argv, "contrl_convert_node");
 	contrl_convert contrl_convert_;
-	contrl_convert_.run( argc, argv );
+	contrl_convert_.run( );
 	return 0;
 }
 

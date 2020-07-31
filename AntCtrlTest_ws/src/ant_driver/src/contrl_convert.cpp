@@ -1,4 +1,4 @@
-/* author :lc   date: 07/28 */
+/* author :lc   date: 07/30 */
 #include <ros/ros.h>
 #include <little_ant_msgs/ControlCmd1.h>
 #include <little_ant_msgs/ControlCmd2.h>
@@ -27,11 +27,21 @@ class contrl_convert
 		ros::Timer sendCmd2Timer_10ms_;
 		void sendCmd1_callback(const ros::TimerEvent&);
 		void sendCmd2_callback(const ros::TimerEvent&);
+		double lastCmdTime;
 };//class contrl_convert end
 
 
 void contrl_convert::run(ros::NodeHandle nh)
 {
+	//init
+	cmd1.set_remoteStart = false;
+	cmd1.set_handBrake = false;
+	cmd1.set_turnLight_R = false;
+	cmd1.set_turnLight_L = false;
+	cmd1.set_lowBeam = false;
+	cmd1.set_reverseLight = false;
+	cmd1.set_brakeLight = false;
+	cmd1.set_horn = false;
 	//subscribe
 	sub = nh.subscribe("/cmd/all", 10, &contrl_convert::cmdCallback, this);
 	//publisher
@@ -40,6 +50,7 @@ void contrl_convert::run(ros::NodeHandle nh)
 	//timeEvent
 	sendCmd1Timer_20ms_ = nh.createTimer(ros::Duration(0.02), &contrl_convert::sendCmd1_callback,this);//cmd1 50Hz 20ms
 	sendCmd2Timer_10ms_ = nh.createTimer(ros::Duration(0.01), &contrl_convert::sendCmd2_callback,this);//cmd2 100Hz 10ms
+	lastCmdTime = ros::Time::now().toSec();
 }
 
 
@@ -52,15 +63,9 @@ void contrl_convert::cmdCallback( const std_msgs::Float32MultiArray::ConstPtr& r
 }
 void contrl_convert::sendCmd1_callback(const ros::TimerEvent& )
 {
-	cmd1.set_driverlessMode = true;
-	cmd1.set_remoteStart = false;
-	cmd1.set_handBrake = false;
-	cmd1.set_turnLight_R = false;
-	cmd1.set_turnLight_L = false;
-	cmd1.set_lowBeam = false;
-	cmd1.set_reverseLight = false;
-	cmd1.set_brakeLight = false;
-	cmd1.set_horn = false;
+	bool isDriveless;
+	(ros::Time::now().toSec() - lastCmdTime) > 0.2 ? isDriveless = false: isDriveless = true;//overtime 0.2s
+	cmd1.set_driverlessMode = isDriveless;
 	cmd1_pub.publish( cmd1 );
 }
 void contrl_convert::sendCmd2_callback(const ros::TimerEvent& )

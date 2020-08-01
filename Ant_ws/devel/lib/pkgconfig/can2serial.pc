@@ -1,0 +1,8 @@
+prefix=/home/seu-lc/v2v_exp-gps-ctrl-thu-/Ant_ws/devel
+
+Name: can2serial
+Description: Description of can2serial
+Version: 0.0.0
+Cflags: -I/home/seu-lc/v2v_exp-gps-ctrl-thu-/Ant_ws/src/lib/can2serial/include
+Libs: -L/home/seu-lc/v2v_exp-gps-ctrl-thu-/Ant_ws/devel/lib -lcan2serial
+Requires: serial

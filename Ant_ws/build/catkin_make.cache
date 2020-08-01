@@ -1,0 +1,2 @@
+acc:ant_driver:esr_radar:gps_drive/gps_listener:gps_drive/gps_msgs:gps_drive/novatel:lib/ant_math:lib/can2serial:little_ant_msgs:ros_can/can_msgs:ros_can/usbcan_driver
+-DCATKIN_DEVEL_PREFIX=/home/seu-lc/v2v_exp-gps-ctrl-thu-/Ant_ws/devel -DCMAKE_INSTALL_PREFIX=/home/seu-lc/v2v_exp-gps-ctrl-thu-/Ant_ws/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/seu-lc/v2v_exp-gps-ctrl-thu-/Ant_ws/devel
+
+Name: can_msgs
+Description: Description of can_msgs
+Version: 0.0.0
+Cflags: -I/home/seu-lc/v2v_exp-gps-ctrl-thu-/Ant_ws/devel/include
+Libs: -L/home/seu-lc/v2v_exp-gps-ctrl-thu-/Ant_ws/devel/lib 
+Requires: message_runtime std_msgs

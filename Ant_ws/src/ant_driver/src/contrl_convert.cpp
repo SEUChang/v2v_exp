@@ -50,7 +50,7 @@ void contrl_convert::run(ros::NodeHandle nh)
 	//timeEvent
 	sendCmd1Timer_20ms_ = nh.createTimer(ros::Duration(0.02), &contrl_convert::sendCmd1_callback,this);//cmd1 50Hz 20ms
 	sendCmd2Timer_10ms_ = nh.createTimer(ros::Duration(0.01), &contrl_convert::sendCmd2_callback,this);//cmd2 100Hz 10ms
-	lastCmdTime = ros::Time::now().toSec();
+	
 }
 
 
@@ -59,12 +59,13 @@ void contrl_convert::cmdCallback( const std_msgs::Float32MultiArray::ConstPtr& r
 {
 	mSpped_kmh = (recvCmdMsg->data)[SPEED_MS_INDEX] * MS2KMH;
 	mRoadAngle_rd = -1 * (recvCmdMsg->data)[ROADWHEEL_RAD_INDEX];
+	lastCmdTime = ros::Time::now().toSec();
 	//upperCmdMsg = * (recvCmdMsg.get() );
 }
 void contrl_convert::sendCmd1_callback(const ros::TimerEvent& )
 {
 	bool isDriveless;
-	(ros::Time::now().toSec() - lastCmdTime) > 0.2 ? isDriveless = false: isDriveless = true;//overtime 0.2s
+	(ros::Time::now().toSec() - lastCmdTime) > 2.0 ? isDriveless = false: isDriveless = true;//overtime 2s
 	cmd1.set_driverlessMode = isDriveless;
 	cmd1_pub.publish( cmd1 );
 }

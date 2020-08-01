@@ -1,8 +1,0 @@
-prefix=/home/seu-lc/v2v_exp-gps-ctrl-thu-/Ant_ws/install
-
-Name: gps_listener
-Description: Description of gps_listener
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/seu-lc/v2v_exp-gps-ctrl-thu-/Ant_ws/install/lib 
-Requires: roscpp rospy std_msgs nav_msgs

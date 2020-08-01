@@ -1,8 +1,0 @@
-prefix=/home/seu-lc/v2v_exp-gps-ctrl-thu-/Ant_ws/devel
-
-Name: acc
-Description: Description of acc
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/seu-lc/v2v_exp-gps-ctrl-thu-/Ant_ws/devel/lib 
-Requires: 

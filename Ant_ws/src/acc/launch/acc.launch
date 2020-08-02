@@ -1,0 +1,10 @@
+<launch>
+	<!-- 跟车目标搜索参数 -->
+	<node name="acc_node" pkg="acc" type="acc_node" output="screen">
+		<param name ="target_search_angle_range" value="15"/>
+		<param name ="max_target_search_distance" value="30"/>
+	</node>
+	<!-- 毫米波雷达驱动 -->	
+	<include file = "$(find esr_radar)/launch/esr_radar.launch">
+	</include>
+</launch>

@@ -8,7 +8,7 @@ import struct
 import perception_msgs.msg
 
 class V2XData(genpy.Message):
-  _md5sum = "784b9cdf681025c07be558fb290fb188"
+  _md5sum = "fb96f885a230ba842ce5534fe6ba0ab5"
   _type = "perception_msgs/V2XData"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """
@@ -25,9 +25,12 @@ float32 x
 float32 y
 float32 yaw
 float32 speed
-#float32 ax
-
-
+float32 utc_time
+uint32 platoon_status
+##----------------------
+float32 bdata0
+float32 bdata1
+float32 bdata2
 
 """
   __slots__ = ['data']
@@ -71,7 +74,7 @@ float32 speed
       buff.write(_struct_I.pack(length))
       for val1 in self.data:
         _x = val1
-        buff.write(_get_struct_i4f().pack(_x.id, _x.x, _x.y, _x.yaw, _x.speed))
+        buff.write(_get_struct_i5fI3f().pack(_x.id, _x.x, _x.y, _x.yaw, _x.speed, _x.utc_time, _x.platoon_status, _x.bdata0, _x.bdata1, _x.bdata2))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -92,8 +95,8 @@ float32 speed
         val1 = perception_msgs.msg.V2XUnit()
         _x = val1
         start = end
-        end += 20
-        (_x.id, _x.x, _x.y, _x.yaw, _x.speed,) = _get_struct_i4f().unpack(str[start:end])
+        end += 40
+        (_x.id, _x.x, _x.y, _x.yaw, _x.speed, _x.utc_time, _x.platoon_status, _x.bdata0, _x.bdata1, _x.bdata2,) = _get_struct_i5fI3f().unpack(str[start:end])
         self.data.append(val1)
       return self
     except struct.error as e:
@@ -111,7 +114,7 @@ float32 speed
       buff.write(_struct_I.pack(length))
       for val1 in self.data:
         _x = val1
-        buff.write(_get_struct_i4f().pack(_x.id, _x.x, _x.y, _x.yaw, _x.speed))
+        buff.write(_get_struct_i5fI3f().pack(_x.id, _x.x, _x.y, _x.yaw, _x.speed, _x.utc_time, _x.platoon_status, _x.bdata0, _x.bdata1, _x.bdata2))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -133,8 +136,8 @@ float32 speed
         val1 = perception_msgs.msg.V2XUnit()
         _x = val1
         start = end
-        end += 20
-        (_x.id, _x.x, _x.y, _x.yaw, _x.speed,) = _get_struct_i4f().unpack(str[start:end])
+        end += 40
+        (_x.id, _x.x, _x.y, _x.yaw, _x.speed, _x.utc_time, _x.platoon_status, _x.bdata0, _x.bdata1, _x.bdata2,) = _get_struct_i5fI3f().unpack(str[start:end])
         self.data.append(val1)
       return self
     except struct.error as e:
@@ -144,9 +147,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_i4f = None
-def _get_struct_i4f():
-    global _struct_i4f
-    if _struct_i4f is None:
-        _struct_i4f = struct.Struct("<i4f")
-    return _struct_i4f
+_struct_i5fI3f = None
+def _get_struct_i5fI3f():
+    global _struct_i5fI3f
+    if _struct_i5fI3f is None:
+        _struct_i5fI3f = struct.Struct("<i5fI3f")
+    return _struct_i5fI3f

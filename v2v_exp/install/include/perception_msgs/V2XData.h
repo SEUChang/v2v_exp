@@ -115,12 +115,12 @@ struct MD5Sum< ::perception_msgs::V2XData_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "784b9cdf681025c07be558fb290fb188";
+    return "fb96f885a230ba842ce5534fe6ba0ab5";
   }
 
   static const char* value(const ::perception_msgs::V2XData_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x784b9cdf681025c0ULL;
-  static const uint64_t static_value2 = 0x7be558fb290fb188ULL;
+  static const uint64_t static_value1 = 0xfb96f885a230ba84ULL;
+  static const uint64_t static_value2 = 0x2ce5534fe6ba0ab5ULL;
 };
 
 template<class ContainerAllocator>
@@ -153,9 +153,12 @@ float32 x\n\
 float32 y\n\
 float32 yaw\n\
 float32 speed\n\
-#float32 ax\n\
-\n\
-\n\
+float32 utc_time\n\
+uint32 platoon_status\n\
+##----------------------\n\
+float32 bdata0\n\
+float32 bdata1\n\
+float32 bdata2\n\
 \n\
 ";
   }

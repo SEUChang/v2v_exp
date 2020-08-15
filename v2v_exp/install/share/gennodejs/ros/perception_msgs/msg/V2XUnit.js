@@ -23,6 +23,11 @@ class V2XUnit {
       this.y = null;
       this.yaw = null;
       this.speed = null;
+      this.utc_time = null;
+      this.platoon_status = null;
+      this.bdata0 = null;
+      this.bdata1 = null;
+      this.bdata2 = null;
     }
     else {
       if (initObj.hasOwnProperty('id')) {
@@ -55,6 +60,36 @@ class V2XUnit {
       else {
         this.speed = 0.0;
       }
+      if (initObj.hasOwnProperty('utc_time')) {
+        this.utc_time = initObj.utc_time
+      }
+      else {
+        this.utc_time = 0.0;
+      }
+      if (initObj.hasOwnProperty('platoon_status')) {
+        this.platoon_status = initObj.platoon_status
+      }
+      else {
+        this.platoon_status = 0;
+      }
+      if (initObj.hasOwnProperty('bdata0')) {
+        this.bdata0 = initObj.bdata0
+      }
+      else {
+        this.bdata0 = 0.0;
+      }
+      if (initObj.hasOwnProperty('bdata1')) {
+        this.bdata1 = initObj.bdata1
+      }
+      else {
+        this.bdata1 = 0.0;
+      }
+      if (initObj.hasOwnProperty('bdata2')) {
+        this.bdata2 = initObj.bdata2
+      }
+      else {
+        this.bdata2 = 0.0;
+      }
     }
   }
 
@@ -70,6 +105,16 @@ class V2XUnit {
     bufferOffset = _serializer.float32(obj.yaw, buffer, bufferOffset);
     // Serialize message field [speed]
     bufferOffset = _serializer.float32(obj.speed, buffer, bufferOffset);
+    // Serialize message field [utc_time]
+    bufferOffset = _serializer.float32(obj.utc_time, buffer, bufferOffset);
+    // Serialize message field [platoon_status]
+    bufferOffset = _serializer.uint32(obj.platoon_status, buffer, bufferOffset);
+    // Serialize message field [bdata0]
+    bufferOffset = _serializer.float32(obj.bdata0, buffer, bufferOffset);
+    // Serialize message field [bdata1]
+    bufferOffset = _serializer.float32(obj.bdata1, buffer, bufferOffset);
+    // Serialize message field [bdata2]
+    bufferOffset = _serializer.float32(obj.bdata2, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -87,11 +132,21 @@ class V2XUnit {
     data.yaw = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [speed]
     data.speed = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [utc_time]
+    data.utc_time = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [platoon_status]
+    data.platoon_status = _deserializer.uint32(buffer, bufferOffset);
+    // Deserialize message field [bdata0]
+    data.bdata0 = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [bdata1]
+    data.bdata1 = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [bdata2]
+    data.bdata2 = _deserializer.float32(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 20;
+    return 40;
   }
 
   static datatype() {
@@ -101,7 +156,7 @@ class V2XUnit {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'a4e6390217c9463b80e0fd0d47fc692d';
+    return '45bc168a1e84404a48fc0ed86b72e629';
   }
 
   static messageDefinition() {
@@ -116,9 +171,12 @@ class V2XUnit {
     float32 y
     float32 yaw
     float32 speed
-    #float32 ax
-    
-    
+    float32 utc_time
+    uint32 platoon_status
+    ##----------------------
+    float32 bdata0
+    float32 bdata1
+    float32 bdata2
     
     
     `;
@@ -163,6 +221,41 @@ class V2XUnit {
     }
     else {
       resolved.speed = 0.0
+    }
+
+    if (msg.utc_time !== undefined) {
+      resolved.utc_time = msg.utc_time;
+    }
+    else {
+      resolved.utc_time = 0.0
+    }
+
+    if (msg.platoon_status !== undefined) {
+      resolved.platoon_status = msg.platoon_status;
+    }
+    else {
+      resolved.platoon_status = 0
+    }
+
+    if (msg.bdata0 !== undefined) {
+      resolved.bdata0 = msg.bdata0;
+    }
+    else {
+      resolved.bdata0 = 0.0
+    }
+
+    if (msg.bdata1 !== undefined) {
+      resolved.bdata1 = msg.bdata1;
+    }
+    else {
+      resolved.bdata1 = 0.0
+    }
+
+    if (msg.bdata2 !== undefined) {
+      resolved.bdata2 = msg.bdata2;
+    }
+    else {
+      resolved.bdata2 = 0.0
     }
 
     return resolved;

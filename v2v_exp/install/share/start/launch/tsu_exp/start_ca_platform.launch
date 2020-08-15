@@ -1,0 +1,40 @@
+<launch>
+    <!--launch udp send -->
+    <include file="$(find shcom)/launch/udp_send.launch">
+        <arg name="my_ns" value="ca"/>
+        <arg name="udp_send_ip" value="192.168.1.10"/>
+        <arg name="udp_send_port" value="4001"/><!--send to can 1-->
+        <arg name="udp_sub_tpk" value="/sendto_ca"/>
+        <arg name="udp_buf_size" value="100"/>
+    </include>
+
+    <!--launch udp recv -->
+    <include file="$(find shcom)/launch/udp_recv.launch">
+        <arg name="my_ns" default="ca"/>
+        <arg name="udp_recv_port" default="4002"/>
+        <!--本机ip 设置 192.168.1.57-->
+        <!--can1 4002 can2 8002-->
+        <arg name="udp_pub_tpk" default="/recvf_ca"/>
+        <arg name="udp_buf_size" default="100"/>
+        <arg name="udp_debug_info" default="True"/>
+    </include>
+
+
+
+
+<!--    &lt;!&ndash;launch dsrc 需要根据dsrc设备配置不同的 ip以及端口&ndash;&gt;-->
+<!--    <include file="$(find start)/launch/tsu_exp/dsrc.launch">-->
+<!--        &lt;!&ndash;通用参数&ndash;&gt;-->
+<!--        <arg name="print_info" value="True"/>-->
+<!--        &lt;!&ndash;向DSRC设备发送信息的参数&ndash;&gt;-->
+<!--        <arg name="dsrc_dev_id" value="2"/>-->
+<!--        <arg name="send_ns" value="/senddata"/>-->
+<!--        <arg name="send_fq" value="3.333333"/>-->
+<!--        <arg name="send_ip" value="192.168.1.110"/>-->
+<!--        <arg name="send_port" value="2028"/>-->
+<!--        &lt;!&ndash;接受DSRC信息的参数配置&ndash;&gt;-->
+<!--        <arg name="recv_ns" value="/recvdata"/>-->
+<!--        <arg name="recv_ip" value="192.168.1.110"/>-->
+<!--        <arg name="recv_port" value="2038"/>-->
+<!--    </include>-->
+</launch>

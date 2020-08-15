@@ -121,12 +121,12 @@ struct MD5Sum< ::perception_msgs::VehStat_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "486129c2c8d47b8a54872b701c610998";
+    return "14f027e98cfa9be37f7d1091ffc370b8";
   }
 
   static const char* value(const ::perception_msgs::VehStat_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x486129c2c8d47b8aULL;
-  static const uint64_t static_value2 = 0x54872b701c610998ULL;
+  static const uint64_t static_value1 = 0x14f027e98cfa9be3ULL;
+  static const uint64_t static_value2 = 0x7f7d1091ffc370b8ULL;
 };
 
 template<class ContainerAllocator>
@@ -154,7 +154,6 @@ struct Definition< ::perception_msgs::VehStat_<ContainerAllocator> >
 \n\
 perception_msgs/Localization localization\n\
 perception_msgs/InternalStat stat\n\
-\n\
 ================================================================================\n\
 MSG: perception_msgs/Localization\n\
 #############################\n\
@@ -204,6 +203,7 @@ float64 vy\n\
 \n\
 float64 omega\n\
 float64 sw\n\
+float64 acc\n\
 ";
   }
 

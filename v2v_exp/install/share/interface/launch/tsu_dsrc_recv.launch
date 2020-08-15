@@ -1,6 +1,0 @@
-<launch>
-    <arg name="my_ns" default="/TCP"/>
-    <node  pkg="interface" type="recv_dsrc" name="recv_dsrc" output="screen">
-        <param name="namespace" value="$(arg my_ns)"/>
-    </node>
-</launch>

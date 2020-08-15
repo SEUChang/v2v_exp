@@ -1,0 +1,9 @@
+<launch>
+    <arg name="freq" default="10"/>
+    <arg name="need_ctrl" default="True"/>
+    <node pkg="start" type="ctrl_test" name="ctrl_test" output="screen">
+        <param name="freq" value="$(arg freq)"/>
+        <param name="is_ctrl" value="$(arg need_ctrl)"/>
+    </node>
+    <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure"/>
+</launch>

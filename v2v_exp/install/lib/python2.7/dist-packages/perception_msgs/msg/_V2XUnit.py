@@ -7,7 +7,7 @@ import struct
 
 
 class V2XUnit(genpy.Message):
-  _md5sum = "a4e6390217c9463b80e0fd0d47fc692d"
+  _md5sum = "45bc168a1e84404a48fc0ed86b72e629"
   _type = "perception_msgs/V2XUnit"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """
@@ -19,13 +19,16 @@ float32 x
 float32 y
 float32 yaw
 float32 speed
-#float32 ax
-
-
+float32 utc_time
+uint32 platoon_status
+##----------------------
+float32 bdata0
+float32 bdata1
+float32 bdata2
 
 """
-  __slots__ = ['id','x','y','yaw','speed']
-  _slot_types = ['int32','float32','float32','float32','float32']
+  __slots__ = ['id','x','y','yaw','speed','utc_time','platoon_status','bdata0','bdata1','bdata2']
+  _slot_types = ['int32','float32','float32','float32','float32','float32','uint32','float32','float32','float32']
 
   def __init__(self, *args, **kwds):
     """
@@ -35,7 +38,7 @@ float32 speed
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       id,x,y,yaw,speed
+       id,x,y,yaw,speed,utc_time,platoon_status,bdata0,bdata1,bdata2
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -54,12 +57,27 @@ float32 speed
         self.yaw = 0.
       if self.speed is None:
         self.speed = 0.
+      if self.utc_time is None:
+        self.utc_time = 0.
+      if self.platoon_status is None:
+        self.platoon_status = 0
+      if self.bdata0 is None:
+        self.bdata0 = 0.
+      if self.bdata1 is None:
+        self.bdata1 = 0.
+      if self.bdata2 is None:
+        self.bdata2 = 0.
     else:
       self.id = 0
       self.x = 0.
       self.y = 0.
       self.yaw = 0.
       self.speed = 0.
+      self.utc_time = 0.
+      self.platoon_status = 0
+      self.bdata0 = 0.
+      self.bdata1 = 0.
+      self.bdata2 = 0.
 
   def _get_types(self):
     """
@@ -74,7 +92,7 @@ float32 speed
     """
     try:
       _x = self
-      buff.write(_get_struct_i4f().pack(_x.id, _x.x, _x.y, _x.yaw, _x.speed))
+      buff.write(_get_struct_i5fI3f().pack(_x.id, _x.x, _x.y, _x.yaw, _x.speed, _x.utc_time, _x.platoon_status, _x.bdata0, _x.bdata1, _x.bdata2))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -87,8 +105,8 @@ float32 speed
       end = 0
       _x = self
       start = end
-      end += 20
-      (_x.id, _x.x, _x.y, _x.yaw, _x.speed,) = _get_struct_i4f().unpack(str[start:end])
+      end += 40
+      (_x.id, _x.x, _x.y, _x.yaw, _x.speed, _x.utc_time, _x.platoon_status, _x.bdata0, _x.bdata1, _x.bdata2,) = _get_struct_i5fI3f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -102,7 +120,7 @@ float32 speed
     """
     try:
       _x = self
-      buff.write(_get_struct_i4f().pack(_x.id, _x.x, _x.y, _x.yaw, _x.speed))
+      buff.write(_get_struct_i5fI3f().pack(_x.id, _x.x, _x.y, _x.yaw, _x.speed, _x.utc_time, _x.platoon_status, _x.bdata0, _x.bdata1, _x.bdata2))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -116,8 +134,8 @@ float32 speed
       end = 0
       _x = self
       start = end
-      end += 20
-      (_x.id, _x.x, _x.y, _x.yaw, _x.speed,) = _get_struct_i4f().unpack(str[start:end])
+      end += 40
+      (_x.id, _x.x, _x.y, _x.yaw, _x.speed, _x.utc_time, _x.platoon_status, _x.bdata0, _x.bdata1, _x.bdata2,) = _get_struct_i5fI3f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -126,9 +144,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_i4f = None
-def _get_struct_i4f():
-    global _struct_i4f
-    if _struct_i4f is None:
-        _struct_i4f = struct.Struct("<i4f")
-    return _struct_i4f
+_struct_i5fI3f = None
+def _get_struct_i5fI3f():
+    global _struct_i5fI3f
+    if _struct_i5fI3f is None:
+        _struct_i5fI3f = struct.Struct("<i5fI3f")
+    return _struct_i5fI3f

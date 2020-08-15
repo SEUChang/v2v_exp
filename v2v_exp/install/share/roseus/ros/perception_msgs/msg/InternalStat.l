@@ -14,7 +14,7 @@
 
 (defclass perception_msgs::InternalStat
   :super ros::object
-  :slots (_state _vx _vy _omega _sw ))
+  :slots (_state _vx _vy _omega _sw _acc ))
 
 (defmethod perception_msgs::InternalStat
   (:init
@@ -24,6 +24,7 @@
     ((:vy __vy) 0.0)
     ((:omega __omega) 0.0)
     ((:sw __sw) 0.0)
+    ((:acc __acc) 0.0)
     )
    (send-super :init)
    (setq _state (round __state))
@@ -31,6 +32,7 @@
    (setq _vy (float __vy))
    (setq _omega (float __omega))
    (setq _sw (float __sw))
+   (setq _acc (float __acc))
    self)
   (:state
    (&optional __state)
@@ -47,6 +49,9 @@
   (:sw
    (&optional __sw)
    (if __sw (setq _sw __sw)) _sw)
+  (:acc
+   (&optional __acc)
+   (if __acc (setq _acc __acc)) _acc)
   (:serialization-length
    ()
    (+
@@ -59,6 +64,8 @@
     ;; float64 _omega
     8
     ;; float64 _sw
+    8
+    ;; float64 _acc
     8
     ))
   (:serialize
@@ -75,6 +82,8 @@
        (sys::poke _omega (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;; float64 _sw
        (sys::poke _sw (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _acc
+       (sys::poke _acc (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -89,11 +98,13 @@
      (setq _omega (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;; float64 _sw
      (setq _sw (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _acc
+     (setq _acc (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;;
    self)
   )
 
-(setf (get perception_msgs::InternalStat :md5sum-) "1eeec9fb78fb360155e20fc1cf720a9e")
+(setf (get perception_msgs::InternalStat :md5sum-) "2559fc5dbe1d04e91c3c57750ee9ec41")
 (setf (get perception_msgs::InternalStat :datatype-) "perception_msgs/InternalStat")
 (setf (get perception_msgs::InternalStat :definition-)
       "#############################
@@ -107,10 +118,11 @@ float64 vy
 
 float64 omega
 float64 sw
+float64 acc
 ")
 
 
 
-(provide :perception_msgs/InternalStat "1eeec9fb78fb360155e20fc1cf720a9e")
+(provide :perception_msgs/InternalStat "2559fc5dbe1d04e91c3c57750ee9ec41")
 
 

@@ -1,0 +1,54 @@
+<launch>
+    <!--通用参数-->
+    <arg name="print_info" default="True"/>
+    <arg name="dsrc_nav_tpk" default="/iv_perception/veh_stat"/>
+    <!--发送参数-->
+    <arg name="dsrc_dev_id" default="1"/>
+    <arg name="send_ns" default="/senddata"/>
+    <arg name="send_fq" default="3.333333"/>
+    <arg name="send_ip" default="127.0.0.1"/>
+    <arg name="send_port" default="8080"/>
+
+
+    <!--接受参数-->
+    <arg name="recv_ns" default="/recvdata"/>
+    <arg name="recv_ip" default="127.0.0.1"/>
+    <arg name="recv_port" default="8081"/>
+
+    <!-- 向dsrc 设备发送信息-->
+    <include file="$(find interface)/launch/tsu_exp/tsu_dsrc_to.launch">
+        <arg name="dsrc_id" value="$(arg dsrc_dev_id)"/>
+        <arg name="freq" value="10"/>
+        <arg name="is_print" value="$(arg print_info)"/>
+        <arg name="my_ns" value="$(arg send_ns)"/>
+        <arg name="nav_tpk" value="$(arg dsrc_nav_tpk)"/>
+    </include>
+
+    <include file="$(find shcom)/launch/tcp_client.launch">
+        <!--发送数据的udp client 节点,需要指定发送频率-->
+        <arg name="my_ns" value="$(arg send_ns)"/>
+        <arg name="tcp_send_port" value="$(arg send_port)"/>
+        <arg name="tcp_send_ip" value="$(arg send_ip)"/>
+        <arg name="tcp_buf_size" value="1000"/>
+        <arg name="is_print" value="$(arg print_info)"/>
+        <arg name="send_freq" value="$(arg send_fq)"/>
+    </include>
+
+
+    <!--接受并解析dsrc的信息-->
+    <include file="$(find interface)/launch/tsu_exp/tsu_dsrc_recv.launch">
+        <arg name="my_ns" value="$(arg recv_ns)"/>
+        <arg name="isprint" value="$(arg print_info)"/>
+    </include>
+
+    <include file="$(find shcom)/launch/tcp_client.launch">
+        <!--接受数据的udp client 节点-->
+        <arg name="my_ns" value="$(arg recv_ns)"/>
+        <arg name="tcp_send_port" value="$(arg recv_port)"/>
+        <arg name="tcp_send_ip" value="$(arg recv_ip)"/>
+        <arg name="tcp_buf_size" value="1000"/>
+        <arg name="is_print" value="$(arg print_info)"/>
+    </include>
+
+</launch>
+

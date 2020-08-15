@@ -1,0 +1,10 @@
+<launch>
+    <arg name="viz_map_name" default="$(find start)/map/2019_10_24_1.bag"/>
+    <arg name="viz_topic_name" default="/hdmap"/>
+    <node pkg="my_viz" type="platoon_viz" name="platoon_viz" output="screen">
+        <param name="map_name" value="$(arg viz_map_name)"/>
+        <param name="map_topic" value="$(arg viz_topic_name)"/>
+    </node>
+
+    <node pkg="rviz" type="rviz" name="rviz"/>
+</launch>

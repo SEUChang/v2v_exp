@@ -28,14 +28,16 @@ struct InternalStat_
     , vx(0.0)
     , vy(0.0)
     , omega(0.0)
-    , sw(0.0)  {
+    , sw(0.0)
+    , acc(0.0)  {
     }
   InternalStat_(const ContainerAllocator& _alloc)
     : state(0)
     , vx(0.0)
     , vy(0.0)
     , omega(0.0)
-    , sw(0.0)  {
+    , sw(0.0)
+    , acc(0.0)  {
   (void)_alloc;
     }
 
@@ -55,6 +57,9 @@ struct InternalStat_
 
    typedef double _sw_type;
   _sw_type sw;
+
+   typedef double _acc_type;
+  _acc_type acc;
 
 
 
@@ -134,12 +139,12 @@ struct MD5Sum< ::perception_msgs::InternalStat_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "1eeec9fb78fb360155e20fc1cf720a9e";
+    return "2559fc5dbe1d04e91c3c57750ee9ec41";
   }
 
   static const char* value(const ::perception_msgs::InternalStat_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x1eeec9fb78fb3601ULL;
-  static const uint64_t static_value2 = 0x55e20fc1cf720a9eULL;
+  static const uint64_t static_value1 = 0x2559fc5dbe1d04e9ULL;
+  static const uint64_t static_value2 = 0x1c3c57750ee9ec41ULL;
 };
 
 template<class ContainerAllocator>
@@ -169,6 +174,7 @@ float64 vy\n\
 \n\
 float64 omega\n\
 float64 sw\n\
+float64 acc\n\
 ";
   }
 
@@ -192,6 +198,7 @@ namespace serialization
       stream.next(m.vy);
       stream.next(m.omega);
       stream.next(m.sw);
+      stream.next(m.acc);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -220,6 +227,8 @@ struct Printer< ::perception_msgs::InternalStat_<ContainerAllocator> >
     Printer<double>::stream(s, indent + "  ", v.omega);
     s << indent << "sw: ";
     Printer<double>::stream(s, indent + "  ", v.sw);
+    s << indent << "acc: ";
+    Printer<double>::stream(s, indent + "  ", v.acc);
   }
 };
 

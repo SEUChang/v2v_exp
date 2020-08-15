@@ -8,6 +8,7 @@ let UTM = require('./UTM.js');
 let GPRMC = require('./GPRMC.js');
 let GPVTG = require('./GPVTG.js');
 let GPFPD = require('./GPFPD.js');
+let GPTRA = require('./GPTRA.js');
 let GNHDT = require('./GNHDT.js');
 let GTIMU = require('./GTIMU.js');
 
@@ -19,6 +20,7 @@ module.exports = {
   GPRMC: GPRMC,
   GPVTG: GPVTG,
   GPFPD: GPFPD,
+  GPTRA: GPTRA,
   GNHDT: GNHDT,
   GTIMU: GTIMU,
 };

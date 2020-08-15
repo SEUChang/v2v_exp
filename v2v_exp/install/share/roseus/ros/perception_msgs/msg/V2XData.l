@@ -61,7 +61,7 @@
    self)
   )
 
-(setf (get perception_msgs::V2XData :md5sum-) "784b9cdf681025c07be558fb290fb188")
+(setf (get perception_msgs::V2XData :md5sum-) "fb96f885a230ba842ce5534fe6ba0ab5")
 (setf (get perception_msgs::V2XData :datatype-) "perception_msgs/V2XData")
 (setf (get perception_msgs::V2XData :definition-)
       "
@@ -78,15 +78,18 @@ float32 x
 float32 y
 float32 yaw
 float32 speed
-#float32 ax
-
-
+float32 utc_time
+uint32 platoon_status
+##----------------------
+float32 bdata0
+float32 bdata1
+float32 bdata2
 
 
 ")
 
 
 
-(provide :perception_msgs/V2XData "784b9cdf681025c07be558fb290fb188")
+(provide :perception_msgs/V2XData "fb96f885a230ba842ce5534fe6ba0ab5")
 
 

@@ -23,6 +23,7 @@ class InternalStat {
       this.vy = null;
       this.omega = null;
       this.sw = null;
+      this.acc = null;
     }
     else {
       if (initObj.hasOwnProperty('state')) {
@@ -55,6 +56,12 @@ class InternalStat {
       else {
         this.sw = 0.0;
       }
+      if (initObj.hasOwnProperty('acc')) {
+        this.acc = initObj.acc
+      }
+      else {
+        this.acc = 0.0;
+      }
     }
   }
 
@@ -70,6 +77,8 @@ class InternalStat {
     bufferOffset = _serializer.float64(obj.omega, buffer, bufferOffset);
     // Serialize message field [sw]
     bufferOffset = _serializer.float64(obj.sw, buffer, bufferOffset);
+    // Serialize message field [acc]
+    bufferOffset = _serializer.float64(obj.acc, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -87,11 +96,13 @@ class InternalStat {
     data.omega = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [sw]
     data.sw = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [acc]
+    data.acc = _deserializer.float64(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 36;
+    return 44;
   }
 
   static datatype() {
@@ -101,7 +112,7 @@ class InternalStat {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '1eeec9fb78fb360155e20fc1cf720a9e';
+    return '2559fc5dbe1d04e91c3c57750ee9ec41';
   }
 
   static messageDefinition() {
@@ -118,6 +129,7 @@ class InternalStat {
     
     float64 omega
     float64 sw
+    float64 acc
     `;
   }
 
@@ -160,6 +172,13 @@ class InternalStat {
     }
     else {
       resolved.sw = 0.0
+    }
+
+    if (msg.acc !== undefined) {
+      resolved.acc = msg.acc;
+    }
+    else {
+      resolved.acc = 0.0
     }
 
     return resolved;

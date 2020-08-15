@@ -9,3 +9,4 @@ float64 vy
 
 float64 omega
 float64 sw
+float64 acc

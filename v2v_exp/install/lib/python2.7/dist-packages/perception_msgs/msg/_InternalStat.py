@@ -7,7 +7,7 @@ import struct
 
 
 class InternalStat(genpy.Message):
-  _md5sum = "1eeec9fb78fb360155e20fc1cf720a9e"
+  _md5sum = "2559fc5dbe1d04e91c3c57750ee9ec41"
   _type = "perception_msgs/InternalStat"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """#############################
@@ -20,9 +20,10 @@ float64 vx
 float64 vy
 
 float64 omega
-float64 sw"""
-  __slots__ = ['state','vx','vy','omega','sw']
-  _slot_types = ['int32','float64','float64','float64','float64']
+float64 sw
+float64 acc"""
+  __slots__ = ['state','vx','vy','omega','sw','acc']
+  _slot_types = ['int32','float64','float64','float64','float64','float64']
 
   def __init__(self, *args, **kwds):
     """
@@ -32,7 +33,7 @@ float64 sw"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       state,vx,vy,omega,sw
+       state,vx,vy,omega,sw,acc
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -51,12 +52,15 @@ float64 sw"""
         self.omega = 0.
       if self.sw is None:
         self.sw = 0.
+      if self.acc is None:
+        self.acc = 0.
     else:
       self.state = 0
       self.vx = 0.
       self.vy = 0.
       self.omega = 0.
       self.sw = 0.
+      self.acc = 0.
 
   def _get_types(self):
     """
@@ -71,7 +75,7 @@ float64 sw"""
     """
     try:
       _x = self
-      buff.write(_get_struct_i4d().pack(_x.state, _x.vx, _x.vy, _x.omega, _x.sw))
+      buff.write(_get_struct_i5d().pack(_x.state, _x.vx, _x.vy, _x.omega, _x.sw, _x.acc))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -84,8 +88,8 @@ float64 sw"""
       end = 0
       _x = self
       start = end
-      end += 36
-      (_x.state, _x.vx, _x.vy, _x.omega, _x.sw,) = _get_struct_i4d().unpack(str[start:end])
+      end += 44
+      (_x.state, _x.vx, _x.vy, _x.omega, _x.sw, _x.acc,) = _get_struct_i5d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -99,7 +103,7 @@ float64 sw"""
     """
     try:
       _x = self
-      buff.write(_get_struct_i4d().pack(_x.state, _x.vx, _x.vy, _x.omega, _x.sw))
+      buff.write(_get_struct_i5d().pack(_x.state, _x.vx, _x.vy, _x.omega, _x.sw, _x.acc))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -113,8 +117,8 @@ float64 sw"""
       end = 0
       _x = self
       start = end
-      end += 36
-      (_x.state, _x.vx, _x.vy, _x.omega, _x.sw,) = _get_struct_i4d().unpack(str[start:end])
+      end += 44
+      (_x.state, _x.vx, _x.vy, _x.omega, _x.sw, _x.acc,) = _get_struct_i5d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -123,9 +127,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_i4d = None
-def _get_struct_i4d():
-    global _struct_i4d
-    if _struct_i4d is None:
-        _struct_i4d = struct.Struct("<i4d")
-    return _struct_i4d
+_struct_i5d = None
+def _get_struct_i5d():
+    global _struct_i5d
+    if _struct_i5d is None:
+        _struct_i5d = struct.Struct("<i5d")
+    return _struct_i5d

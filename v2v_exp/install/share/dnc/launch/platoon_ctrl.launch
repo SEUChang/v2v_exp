@@ -1,5 +1,14 @@
 <launch>
-    <node pkg="dnc" type="platoon_ctrl" name="platoon_ctrl" output="screen">
+    <arg name="map_name" default="$(find start)/map/2019_10_24_1.bag"/>
+    <arg name="my_task" default="1"/>
+    <arg name="my_topology" default="4"/>
+    <arg name="my_method" default="1"/>
 
+
+    <node pkg="dnc" type="platoon_ctrl" name="platoon_ctrl" output="screen">
+        <param name="bag_name" value="$(arg map_name)"/>
+        <param name="task" value="$(arg my_task)"/>
+        <param name="topology" value="$(arg my_topology)"/>
+        <param name="method" value="$(arg my_method)"/>
     </node>
 </launch>

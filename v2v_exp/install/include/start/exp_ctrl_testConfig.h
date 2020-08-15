@@ -239,12 +239,18 @@ class DEFAULT
         if("fw_rad"==(*_i)->name){fw_rad = boost::any_cast<double>(val);}
         if("vx_ms"==(*_i)->name){vx_ms = boost::any_cast<double>(val);}
         if("ax_ms2"==(*_i)->name){ax_ms2 = boost::any_cast<double>(val);}
+        if("is_hv_running"==(*_i)->name){is_hv_running = boost::any_cast<bool>(val);}
+        if("is_pctrl"==(*_i)->name){is_pctrl = boost::any_cast<bool>(val);}
+        if("start_station"==(*_i)->name){start_station = boost::any_cast<double>(val);}
       }
     }
 
     double fw_rad;
 double vx_ms;
 double ax_ms2;
+bool is_hv_running;
+bool is_pctrl;
+double start_station;
 
     bool state;
     std::string name;
@@ -260,6 +266,12 @@ double ax_ms2;
       double vx_ms;
 //#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       double ax_ms2;
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      bool is_hv_running;
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      bool is_pctrl;
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      double start_station;
 //#line 228 "/opt/ros/kinetic/share/dynamic_reconfigure/cmake/../templates/ConfigType.h.template"
 
     bool __fromMessage__(dynamic_reconfigure::Config &msg)
@@ -399,15 +411,15 @@ double ax_ms2;
     {
 exp_ctrl_testConfig::GroupDescription<exp_ctrl_testConfig::DEFAULT, exp_ctrl_testConfig> Default("Default", "", 0, 0, true, &exp_ctrl_testConfig::groups);
 //#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.fw_rad = -500.0;
+      __min__.fw_rad = -0.5;
 //#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.fw_rad = 500.0;
+      __max__.fw_rad = 0.5;
 //#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __default__.fw_rad = 0.0;
 //#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(exp_ctrl_testConfig::AbstractParamDescriptionConstPtr(new exp_ctrl_testConfig::ParamDescription<double>("fw_rad", "double", 0, "steering wheel angle/deg", "", &exp_ctrl_testConfig::fw_rad)));
+      Default.abstract_parameters.push_back(exp_ctrl_testConfig::AbstractParamDescriptionConstPtr(new exp_ctrl_testConfig::ParamDescription<double>("fw_rad", "double", 0, "front wheel angle/rad", "", &exp_ctrl_testConfig::fw_rad)));
 //#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(exp_ctrl_testConfig::AbstractParamDescriptionConstPtr(new exp_ctrl_testConfig::ParamDescription<double>("fw_rad", "double", 0, "steering wheel angle/deg", "", &exp_ctrl_testConfig::fw_rad)));
+      __param_descriptions__.push_back(exp_ctrl_testConfig::AbstractParamDescriptionConstPtr(new exp_ctrl_testConfig::ParamDescription<double>("fw_rad", "double", 0, "front wheel angle/rad", "", &exp_ctrl_testConfig::fw_rad)));
 //#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.vx_ms = 0.0;
 //#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
@@ -428,6 +440,36 @@ exp_ctrl_testConfig::GroupDescription<exp_ctrl_testConfig::DEFAULT, exp_ctrl_tes
       Default.abstract_parameters.push_back(exp_ctrl_testConfig::AbstractParamDescriptionConstPtr(new exp_ctrl_testConfig::ParamDescription<double>("ax_ms2", "double", 0, "acceleration m/ms2", "", &exp_ctrl_testConfig::ax_ms2)));
 //#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(exp_ctrl_testConfig::AbstractParamDescriptionConstPtr(new exp_ctrl_testConfig::ParamDescription<double>("ax_ms2", "double", 0, "acceleration m/ms2", "", &exp_ctrl_testConfig::ax_ms2)));
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __min__.is_hv_running = 0;
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __max__.is_hv_running = 1;
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __default__.is_hv_running = 0;
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      Default.abstract_parameters.push_back(exp_ctrl_testConfig::AbstractParamDescriptionConstPtr(new exp_ctrl_testConfig::ParamDescription<bool>("is_hv_running", "bool", 0, "start simu veh", "", &exp_ctrl_testConfig::is_hv_running)));
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __param_descriptions__.push_back(exp_ctrl_testConfig::AbstractParamDescriptionConstPtr(new exp_ctrl_testConfig::ParamDescription<bool>("is_hv_running", "bool", 0, "start simu veh", "", &exp_ctrl_testConfig::is_hv_running)));
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __min__.is_pctrl = 0;
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __max__.is_pctrl = 1;
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __default__.is_pctrl = 0;
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      Default.abstract_parameters.push_back(exp_ctrl_testConfig::AbstractParamDescriptionConstPtr(new exp_ctrl_testConfig::ParamDescription<bool>("is_pctrl", "bool", 0, "pause simu veh", "", &exp_ctrl_testConfig::is_pctrl)));
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __param_descriptions__.push_back(exp_ctrl_testConfig::AbstractParamDescriptionConstPtr(new exp_ctrl_testConfig::ParamDescription<bool>("is_pctrl", "bool", 0, "pause simu veh", "", &exp_ctrl_testConfig::is_pctrl)));
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __min__.start_station = 0.0;
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __max__.start_station = 500.0;
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __default__.start_station = 0.0;
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      Default.abstract_parameters.push_back(exp_ctrl_testConfig::AbstractParamDescriptionConstPtr(new exp_ctrl_testConfig::ParamDescription<double>("start_station", "double", 0, "simu veh start station m", "", &exp_ctrl_testConfig::start_station)));
+//#line 290 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __param_descriptions__.push_back(exp_ctrl_testConfig::AbstractParamDescriptionConstPtr(new exp_ctrl_testConfig::ParamDescription<double>("start_station", "double", 0, "simu veh start station m", "", &exp_ctrl_testConfig::start_station)));
 //#line 245 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.convertParams();
 //#line 245 "/opt/ros/kinetic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"

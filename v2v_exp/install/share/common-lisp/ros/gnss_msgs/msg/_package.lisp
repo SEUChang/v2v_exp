@@ -9,6 +9,8 @@
    "GPGGA"
    "<GPRMC>"
    "GPRMC"
+   "<GPTRA>"
+   "GPTRA"
    "<GPVTG>"
    "GPVTG"
    "<GTIMU>"

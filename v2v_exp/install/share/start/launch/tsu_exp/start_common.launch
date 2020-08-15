@@ -1,0 +1,19 @@
+<launch>
+    <!--此launch文件通用，启动地图、队列控制以及可视化节点，三车的launch文件的参数也均相同-->
+    <arg name="map" default="$(find start)/map/2019_10_24_1.bag"/>
+    <arg name="my_task" default="1"/>
+    <arg name="my_topology" default="4"/>
+    <arg name="my_method" default="1"/>
+
+    <include file="$(find dnc)/launch/platoon_ctrl.launch">
+        <arg name="map_name" value="$(arg map)"/>
+
+        <arg name="my_task" value="$(arg my_task)"/>
+        <arg name="my_topology" value="$(arg my_topology)"/>
+        <arg name="my_method" value="$(arg my_method)"/>
+    </include>
+
+    <include file="$(find my_viz)/launch/viz_platoon.launch">
+        <arg name="viz_map_name" value="$(arg map)"/>
+    </include>
+</launch>

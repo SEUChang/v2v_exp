@@ -9,7 +9,7 @@ import perception_msgs.msg
 import std_msgs.msg
 
 class VehStat(genpy.Message):
-  _md5sum = "486129c2c8d47b8a54872b701c610998"
+  _md5sum = "14f027e98cfa9be37f7d1091ffc370b8"
   _type = "perception_msgs/VehStat"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """#############################
@@ -21,7 +21,6 @@ class VehStat(genpy.Message):
 
 perception_msgs/Localization localization
 perception_msgs/InternalStat stat
-
 ================================================================================
 MSG: perception_msgs/Localization
 #############################
@@ -70,7 +69,8 @@ float64 vx
 float64 vy
 
 float64 omega
-float64 sw"""
+float64 sw
+float64 acc"""
   __slots__ = ['localization','stat']
   _slot_types = ['perception_msgs/Localization','perception_msgs/InternalStat']
 
@@ -120,7 +120,7 @@ float64 sw"""
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_get_struct_i6di4d().pack(_x.localization.state, _x.localization.x, _x.localization.y, _x.localization.z, _x.localization.heading, _x.localization.speed, _x.localization.utc_time, _x.stat.state, _x.stat.vx, _x.stat.vy, _x.stat.omega, _x.stat.sw))
+      buff.write(_get_struct_i6di5d().pack(_x.localization.state, _x.localization.x, _x.localization.y, _x.localization.z, _x.localization.heading, _x.localization.speed, _x.localization.utc_time, _x.stat.state, _x.stat.vx, _x.stat.vy, _x.stat.omega, _x.stat.sw, _x.stat.acc))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -150,8 +150,8 @@ float64 sw"""
         self.localization.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 88
-      (_x.localization.state, _x.localization.x, _x.localization.y, _x.localization.z, _x.localization.heading, _x.localization.speed, _x.localization.utc_time, _x.stat.state, _x.stat.vx, _x.stat.vy, _x.stat.omega, _x.stat.sw,) = _get_struct_i6di4d().unpack(str[start:end])
+      end += 96
+      (_x.localization.state, _x.localization.x, _x.localization.y, _x.localization.z, _x.localization.heading, _x.localization.speed, _x.localization.utc_time, _x.stat.state, _x.stat.vx, _x.stat.vy, _x.stat.omega, _x.stat.sw, _x.stat.acc,) = _get_struct_i6di5d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -173,7 +173,7 @@ float64 sw"""
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_get_struct_i6di4d().pack(_x.localization.state, _x.localization.x, _x.localization.y, _x.localization.z, _x.localization.heading, _x.localization.speed, _x.localization.utc_time, _x.stat.state, _x.stat.vx, _x.stat.vy, _x.stat.omega, _x.stat.sw))
+      buff.write(_get_struct_i6di5d().pack(_x.localization.state, _x.localization.x, _x.localization.y, _x.localization.z, _x.localization.heading, _x.localization.speed, _x.localization.utc_time, _x.stat.state, _x.stat.vx, _x.stat.vy, _x.stat.omega, _x.stat.sw, _x.stat.acc))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -204,8 +204,8 @@ float64 sw"""
         self.localization.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 88
-      (_x.localization.state, _x.localization.x, _x.localization.y, _x.localization.z, _x.localization.heading, _x.localization.speed, _x.localization.utc_time, _x.stat.state, _x.stat.vx, _x.stat.vy, _x.stat.omega, _x.stat.sw,) = _get_struct_i6di4d().unpack(str[start:end])
+      end += 96
+      (_x.localization.state, _x.localization.x, _x.localization.y, _x.localization.z, _x.localization.heading, _x.localization.speed, _x.localization.utc_time, _x.stat.state, _x.stat.vx, _x.stat.vy, _x.stat.omega, _x.stat.sw, _x.stat.acc,) = _get_struct_i6di5d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -220,9 +220,9 @@ def _get_struct_3I():
     if _struct_3I is None:
         _struct_3I = struct.Struct("<3I")
     return _struct_3I
-_struct_i6di4d = None
-def _get_struct_i6di4d():
-    global _struct_i6di4d
-    if _struct_i6di4d is None:
-        _struct_i6di4d = struct.Struct("<i6di4d")
-    return _struct_i6di4d
+_struct_i6di5d = None
+def _get_struct_i6di5d():
+    global _struct_i6di5d
+    if _struct_i6di5d is None:
+        _struct_i6di5d = struct.Struct("<i6di5d")
+    return _struct_i6di5d

@@ -9,4 +9,14 @@
           YAW
           SPEED-VAL
           SPEED
+          UTC_TIME-VAL
+          UTC_TIME
+          PLATOON_STATUS-VAL
+          PLATOON_STATUS
+          BDATA0-VAL
+          BDATA0
+          BDATA1-VAL
+          BDATA1
+          BDATA2-VAL
+          BDATA2
 ))

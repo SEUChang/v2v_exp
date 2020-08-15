@@ -58,16 +58,16 @@
   "perception_msgs/V2XData")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<V2XData>)))
   "Returns md5sum for a message object of type '<V2XData>"
-  "784b9cdf681025c07be558fb290fb188")
+  "fb96f885a230ba842ce5534fe6ba0ab5")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'V2XData)))
   "Returns md5sum for a message object of type 'V2XData"
-  "784b9cdf681025c07be558fb290fb188")
+  "fb96f885a230ba842ce5534fe6ba0ab5")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<V2XData>)))
   "Returns full string definition for message of type '<V2XData>"
-  (cl:format cl:nil "~%~%perception_msgs/V2XUnit[] data~%================================================================================~%MSG: perception_msgs/V2XUnit~%~%~%~%#std_msgs/String info_id~%int32  id~%float32 x~%float32 y~%float32 yaw~%float32 speed~%#float32 ax~%~%~%~%~%~%"))
+  (cl:format cl:nil "~%~%perception_msgs/V2XUnit[] data~%================================================================================~%MSG: perception_msgs/V2XUnit~%~%~%~%#std_msgs/String info_id~%int32  id~%float32 x~%float32 y~%float32 yaw~%float32 speed~%float32 utc_time~%uint32 platoon_status~%##----------------------~%float32 bdata0~%float32 bdata1~%float32 bdata2~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'V2XData)))
   "Returns full string definition for message of type 'V2XData"
-  (cl:format cl:nil "~%~%perception_msgs/V2XUnit[] data~%================================================================================~%MSG: perception_msgs/V2XUnit~%~%~%~%#std_msgs/String info_id~%int32  id~%float32 x~%float32 y~%float32 yaw~%float32 speed~%#float32 ax~%~%~%~%~%~%"))
+  (cl:format cl:nil "~%~%perception_msgs/V2XUnit[] data~%================================================================================~%MSG: perception_msgs/V2XUnit~%~%~%~%#std_msgs/String info_id~%int32  id~%float32 x~%float32 y~%float32 yaw~%float32 speed~%float32 utc_time~%uint32 platoon_status~%##----------------------~%float32 bdata0~%float32 bdata1~%float32 bdata2~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <V2XData>))
   (cl:+ 0
      4 (cl:reduce #'cl:+ (cl:slot-value msg 'data) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ (roslisp-msg-protocol:serialization-length ele))))

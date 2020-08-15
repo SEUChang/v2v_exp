@@ -68,7 +68,7 @@
    self)
   )
 
-(setf (get perception_msgs::VehStat :md5sum-) "486129c2c8d47b8a54872b701c610998")
+(setf (get perception_msgs::VehStat :md5sum-) "14f027e98cfa9be37f7d1091ffc370b8")
 (setf (get perception_msgs::VehStat :datatype-) "perception_msgs/VehStat")
 (setf (get perception_msgs::VehStat :definition-)
       "#############################
@@ -80,7 +80,6 @@
 
 perception_msgs/Localization localization
 perception_msgs/InternalStat stat
-
 ================================================================================
 MSG: perception_msgs/Localization
 #############################
@@ -130,10 +129,11 @@ float64 vy
 
 float64 omega
 float64 sw
+float64 acc
 ")
 
 
 
-(provide :perception_msgs/VehStat "486129c2c8d47b8a54872b701c610998")
+(provide :perception_msgs/VehStat "14f027e98cfa9be37f7d1091ffc370b8")
 
 

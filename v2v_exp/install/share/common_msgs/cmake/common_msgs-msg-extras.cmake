@@ -1,2 +1,0 @@
-set(common_msgs_MESSAGE_FILES "msg/actuator.msg;msg/app.msg;msg/controllat.msg;msg/controllon.msg;msg/monitor.msg;msg/planningmotion.msg;msg/point3d.msg;msg/roadpoint.msg;msg/sensorcameralight.msg;msg/sensorgps.msg;msg/sensorobject.msg;msg/decisionbehavior.msg;msg/sensorobjects.msg;msg/trajectorypoints.msg;msg/lonlat.msg;msg/nextproperty.msg")
-set(common_msgs_SERVICE_FILES "srv/TranslateCoordinate.srv")

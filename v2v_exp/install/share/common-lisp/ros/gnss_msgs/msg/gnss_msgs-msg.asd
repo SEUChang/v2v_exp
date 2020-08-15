@@ -14,6 +14,8 @@
     (:file "_package_GPGGA" :depends-on ("_package"))
     (:file "GPRMC" :depends-on ("_package_GPRMC"))
     (:file "_package_GPRMC" :depends-on ("_package"))
+    (:file "GPTRA" :depends-on ("_package_GPTRA"))
+    (:file "_package_GPTRA" :depends-on ("_package"))
     (:file "GPVTG" :depends-on ("_package_GPVTG"))
     (:file "_package_GPVTG" :depends-on ("_package"))
     (:file "GTIMU" :depends-on ("_package_GTIMU"))

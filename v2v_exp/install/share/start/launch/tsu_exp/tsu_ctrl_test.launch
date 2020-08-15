@@ -1,0 +1,22 @@
+<launch>
+    <arg name="freq" default="10"/>
+    <arg name="need_ctrl" default="True"/>
+    <node pkg="start" type="ctrl_test" name="ctrl_test" output="screen">
+        <param name="freq" value="$(arg freq)"/>
+        <param name="is_ctrl" value="$(arg need_ctrl)"/>
+    </node>
+    <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure"/>
+
+    <!--launch chasiss ctrl mode-->
+    <include file="$(find shcom)/launch/serial_com.launch">
+        <arg name="com_serial_port" value="/dev/ttyUSB0"/>
+        <arg name="com_baud_rate" value="9600"/>
+        <arg name="com_freq" value="10"/>
+        <arg name="com_pub_tpk" value="/ctrl/none"/>
+        <arg name="my_ns" value="ctrl"/>
+        <arg name="com_sub_tpk" value="/tsu/ctrl_cmd"/>
+    </include>
+    <!--launch tsu ctrl node -->
+    <include file="$(find interface)/launch/tsu_exp/tsu_chassis_ctrl.launch"/>
+
+</launch>

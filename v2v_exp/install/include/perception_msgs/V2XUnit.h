@@ -28,14 +28,24 @@ struct V2XUnit_
     , x(0.0)
     , y(0.0)
     , yaw(0.0)
-    , speed(0.0)  {
+    , speed(0.0)
+    , utc_time(0.0)
+    , platoon_status(0)
+    , bdata0(0.0)
+    , bdata1(0.0)
+    , bdata2(0.0)  {
     }
   V2XUnit_(const ContainerAllocator& _alloc)
     : id(0)
     , x(0.0)
     , y(0.0)
     , yaw(0.0)
-    , speed(0.0)  {
+    , speed(0.0)
+    , utc_time(0.0)
+    , platoon_status(0)
+    , bdata0(0.0)
+    , bdata1(0.0)
+    , bdata2(0.0)  {
   (void)_alloc;
     }
 
@@ -55,6 +65,21 @@ struct V2XUnit_
 
    typedef float _speed_type;
   _speed_type speed;
+
+   typedef float _utc_time_type;
+  _utc_time_type utc_time;
+
+   typedef uint32_t _platoon_status_type;
+  _platoon_status_type platoon_status;
+
+   typedef float _bdata0_type;
+  _bdata0_type bdata0;
+
+   typedef float _bdata1_type;
+  _bdata1_type bdata1;
+
+   typedef float _bdata2_type;
+  _bdata2_type bdata2;
 
 
 
@@ -134,12 +159,12 @@ struct MD5Sum< ::perception_msgs::V2XUnit_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "a4e6390217c9463b80e0fd0d47fc692d";
+    return "45bc168a1e84404a48fc0ed86b72e629";
   }
 
   static const char* value(const ::perception_msgs::V2XUnit_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xa4e6390217c9463bULL;
-  static const uint64_t static_value2 = 0x80e0fd0d47fc692dULL;
+  static const uint64_t static_value1 = 0x45bc168a1e84404aULL;
+  static const uint64_t static_value2 = 0x48fc0ed86b72e629ULL;
 };
 
 template<class ContainerAllocator>
@@ -167,9 +192,12 @@ float32 x\n\
 float32 y\n\
 float32 yaw\n\
 float32 speed\n\
-#float32 ax\n\
-\n\
-\n\
+float32 utc_time\n\
+uint32 platoon_status\n\
+##----------------------\n\
+float32 bdata0\n\
+float32 bdata1\n\
+float32 bdata2\n\
 \n\
 ";
   }
@@ -194,6 +222,11 @@ namespace serialization
       stream.next(m.y);
       stream.next(m.yaw);
       stream.next(m.speed);
+      stream.next(m.utc_time);
+      stream.next(m.platoon_status);
+      stream.next(m.bdata0);
+      stream.next(m.bdata1);
+      stream.next(m.bdata2);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -222,6 +255,16 @@ struct Printer< ::perception_msgs::V2XUnit_<ContainerAllocator> >
     Printer<float>::stream(s, indent + "  ", v.yaw);
     s << indent << "speed: ";
     Printer<float>::stream(s, indent + "  ", v.speed);
+    s << indent << "utc_time: ";
+    Printer<float>::stream(s, indent + "  ", v.utc_time);
+    s << indent << "platoon_status: ";
+    Printer<uint32_t>::stream(s, indent + "  ", v.platoon_status);
+    s << indent << "bdata0: ";
+    Printer<float>::stream(s, indent + "  ", v.bdata0);
+    s << indent << "bdata1: ";
+    Printer<float>::stream(s, indent + "  ", v.bdata1);
+    s << indent << "bdata2: ";
+    Printer<float>::stream(s, indent + "  ", v.bdata2);
   }
 };
 

@@ -9,4 +9,6 @@
           OMEGA
           SW-VAL
           SW
+          ACC-VAL
+          ACC
 ))

@@ -62,7 +62,7 @@ class VehStat {
   static getMessageSize(object) {
     let length = 0;
     length += Localization.getMessageSize(object.localization);
-    return length + 36;
+    return length + 44;
   }
 
   static datatype() {
@@ -72,7 +72,7 @@ class VehStat {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '486129c2c8d47b8a54872b701c610998';
+    return '14f027e98cfa9be37f7d1091ffc370b8';
   }
 
   static messageDefinition() {
@@ -87,7 +87,6 @@ class VehStat {
     
     perception_msgs/Localization localization
     perception_msgs/InternalStat stat
-    
     ================================================================================
     MSG: perception_msgs/Localization
     #############################
@@ -137,6 +136,7 @@ class VehStat {
     
     float64 omega
     float64 sw
+    float64 acc
     `;
   }
 

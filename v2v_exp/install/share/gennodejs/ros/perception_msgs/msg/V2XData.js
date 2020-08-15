@@ -58,7 +58,7 @@ class V2XData {
 
   static getMessageSize(object) {
     let length = 0;
-    length += 20 * object.data.length;
+    length += 40 * object.data.length;
     return length + 4;
   }
 
@@ -69,7 +69,7 @@ class V2XData {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '784b9cdf681025c07be558fb290fb188';
+    return 'fb96f885a230ba842ce5534fe6ba0ab5';
   }
 
   static messageDefinition() {
@@ -89,9 +89,12 @@ class V2XData {
     float32 y
     float32 yaw
     float32 speed
-    #float32 ax
-    
-    
+    float32 utc_time
+    uint32 platoon_status
+    ##----------------------
+    float32 bdata0
+    float32 bdata1
+    float32 bdata2
     
     
     `;

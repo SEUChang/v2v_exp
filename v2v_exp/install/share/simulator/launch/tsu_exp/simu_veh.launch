@@ -1,0 +1,14 @@
+<launch>
+    <arg name="bag" default="$(find start)/map/2019_10_24_1.bag"/>
+    <arg name="spectrum_ID" default="0"/>
+    <arg name="is_simu_head" default="True"/>
+    <arg name="win_size" default="10"/>
+
+
+    <node pkg="simulator" name="simu_veh" type="simu_veh" output="screen">
+        <param name="bag_name" value="$(arg bag)"/>
+        <param name="is_simu" value="$(arg is_simu_head)"/>
+        <param name="spectrum_ID" value="$(arg spectrum_ID)"/>
+        <param name="win_size" value="$(arg win_size)"/>
+    </node>
+</launch>

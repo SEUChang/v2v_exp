@@ -31,6 +31,11 @@
     :reader sw
     :initarg :sw
     :type cl:float
+    :initform 0.0)
+   (acc
+    :reader acc
+    :initarg :acc
+    :type cl:float
     :initform 0.0))
 )
 
@@ -66,6 +71,11 @@
 (cl:defmethod sw-val ((m <InternalStat>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader perception_msgs-msg:sw-val is deprecated.  Use perception_msgs-msg:sw instead.")
   (sw m))
+
+(cl:ensure-generic-function 'acc-val :lambda-list '(m))
+(cl:defmethod acc-val ((m <InternalStat>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader perception_msgs-msg:acc-val is deprecated.  Use perception_msgs-msg:acc instead.")
+  (acc m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <InternalStat>) ostream)
   "Serializes a message object of type '<InternalStat>"
   (cl:let* ((signed (cl:slot-value msg 'state)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
@@ -102,6 +112,15 @@
     (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
   (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'sw))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'acc))))
     (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
@@ -159,6 +178,16 @@
       (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
     (cl:setf (cl:slot-value msg 'sw) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'acc) (roslisp-utils:decode-double-float-bits bits)))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<InternalStat>)))
@@ -169,19 +198,20 @@
   "perception_msgs/InternalStat")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<InternalStat>)))
   "Returns md5sum for a message object of type '<InternalStat>"
-  "1eeec9fb78fb360155e20fc1cf720a9e")
+  "2559fc5dbe1d04e91c3c57750ee9ec41")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'InternalStat)))
   "Returns md5sum for a message object of type 'InternalStat"
-  "1eeec9fb78fb360155e20fc1cf720a9e")
+  "2559fc5dbe1d04e91c3c57750ee9ec41")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<InternalStat>)))
   "Returns full string definition for message of type '<InternalStat>"
-  (cl:format cl:nil "#############################~%###       SunHao          ###~%#############################~%~%int32 state~%~%float64 vx~%float64 vy~%~%float64 omega~%float64 sw~%~%"))
+  (cl:format cl:nil "#############################~%###       SunHao          ###~%#############################~%~%int32 state~%~%float64 vx~%float64 vy~%~%float64 omega~%float64 sw~%float64 acc~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'InternalStat)))
   "Returns full string definition for message of type 'InternalStat"
-  (cl:format cl:nil "#############################~%###       SunHao          ###~%#############################~%~%int32 state~%~%float64 vx~%float64 vy~%~%float64 omega~%float64 sw~%~%"))
+  (cl:format cl:nil "#############################~%###       SunHao          ###~%#############################~%~%int32 state~%~%float64 vx~%float64 vy~%~%float64 omega~%float64 sw~%float64 acc~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <InternalStat>))
   (cl:+ 0
      4
+     8
      8
      8
      8
@@ -195,4 +225,5 @@
     (cl:cons ':vy (vy msg))
     (cl:cons ':omega (omega msg))
     (cl:cons ':sw (sw msg))
+    (cl:cons ':acc (acc msg))
 ))

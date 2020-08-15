@@ -34,6 +34,8 @@ class contrl_convert
 void contrl_convert::run(ros::NodeHandle nh)
 {
 	//init
+	mRoadAngle_rd = 0;
+	//mSpped_kmh = 0;
 	cmd1.set_remoteStart = false;
 	cmd1.set_handBrake = false;
 	cmd1.set_turnLight_R = false;
@@ -58,7 +60,7 @@ void contrl_convert::run(ros::NodeHandle nh)
 void contrl_convert::cmdCallback( const std_msgs::Float32MultiArray::ConstPtr& recvCmdMsg)
 {
 	mSpped_kmh = (recvCmdMsg->data)[SPEED_MS_INDEX] * MS2KMH;
-	mRoadAngle_rd = -1 * (recvCmdMsg->data)[ROADWHEEL_RAD_INDEX];
+	mRoadAngle_rd =  (recvCmdMsg->data)[ROADWHEEL_RAD_INDEX];
 	lastCmdTime = ros::Time::now().toSec();
 	//upperCmdMsg = * (recvCmdMsg.get() );
 }
@@ -74,8 +76,9 @@ void contrl_convert::sendCmd2_callback(const ros::TimerEvent& )
 	cmd2.set_gear = little_ant_msgs::ControlCmd2::GEAR_DRIVE;
 	cmd2.set_emergencyBrake = false;
 	
-	cmd2.set_roadWheelAngle  = mRoadAngle_rd;  //roadWheel_rad:CCW(+),roadWheelAngle:CCW(-)
+	cmd2.set_roadWheelAngle  = mRoadAngle_rd * 180 / 3.1415;  //roadWheel_rad:CCW(+),roadWheelAngle:CCW(-)
 	cmd2.set_speed = mSpped_kmh;
+	//cmd2.set_speed = 5;
 	//cmd2.set_roadWheelAngle = (upperCmdMsg.data)[SPEED_MS_INDEX] * MS2KMH;
 	//cmd2.set_speed = -1 * (upperCmdMsg.data)[ROADWHEEL_RAD_INDEX];
 	

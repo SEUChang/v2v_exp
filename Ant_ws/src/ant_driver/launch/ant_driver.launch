@@ -10,8 +10,8 @@
 		<param name ="max_steering_speed" value="2.0"/> <!--前后帧转角最大差值 -->
 		<param name ="steering_offset" value="20"/>  <!--左负右正 -->
 	</node>
-	
-	<node pkg = "ant_driver" type = "contrl_convert" name = "contrl_convert_node">
-	</node>
-	
+	<!-- control Adapter -->
+	<node pkg = "ant_driver" type = "contrl_convert" name = "contrl_convert_node"/>
+
+
 </launch>
